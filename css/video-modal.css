@@ -1,0 +1,1216 @@
+/* Video Modal Styles */
+.video-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10000;
+    align-items: flex-start;
+    padding: 20px;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(31, 42, 61, 0.6);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    z-index: 1;
+}
+
+.modal-content {
+    position: relative;
+    z-index: 2;
+    background: linear-gradient(135deg, var(--primary-darkest) 0%, var(--primary-darker) 100%); /* Default hardcoded gradient */
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 20px !important;
+    max-width: 1200px;
+    width: 1200px;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    animation: slideUp 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    scrollbar-color: var(--primary-darker) rgba(255, 255, 255, 0.08); /* Firefox */
+    scrollbar-width: thin; /* Firefox */
+    box-sizing: border-box;
+    margin: 0 auto;
+    display: block !important; /* force block display, not grid */
+    grid-template-columns: none !important; /* override grid layout */
+    gap: 0 !important; /* remove grid gap */
+    padding: 0 !important; /* remove grid padding */
+    color: #FFFEE0 !important; /* Default text color */
+}
+
+.modal-header {
+    position: relative;
+    background: transparent !important;
+    color: #FFFEE0 !important;
+    padding: 0.5rem 2rem 0.75rem 2rem !important;
+    border-radius: 20px 20px 0 0 !important;
+    z-index: 10;
+    border-bottom: none !important;
+    display: flex !important;
+    align-items: flex-start !important;
+    justify-content: space-between !important;
+    min-height: 60px;
+}
+
+.video-modal .modal-header h2 {
+    color: #FFFEE0 !important;
+    margin: 0.25rem 0 0 0 !important;
+    font-size: 2rem !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    flex: 1 !important;
+    line-height: 1.2 !important;
+}
+
+.video-modal .close-modal {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: #FFFFFF !important;
+    font-size: 2rem !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    cursor: pointer;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s ease;
+    line-height: 1.2;
+    flex-shrink: 0 !important;
+    margin-top: 0.25rem !important;
+}
+
+.video-modal .close-modal:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    color: #FFFFFF !important;
+    transform: rotate(90deg);
+}
+
+/* Special positioning for Banafa for Oud close button */
+.video-modal .banafa-close {
+    position: absolute !important;
+    top: 20px !important;
+    right: 20px !important;
+    z-index: 1000 !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: #FFFFFF !important;
+    font-size: 2rem !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    cursor: pointer;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s ease;
+    line-height: 1.2;
+}
+
+.video-modal .banafa-close:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    color: #FFFFFF !important;
+    transform: rotate(90deg);
+}
+
+/* Top image container for Banafa for Oud */
+.video-modal .top-image-container {
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    position: relative !important;
+}
+
+.video-modal .top-image-container img {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 20px 20px 0 0 !important;
+}
+
+/* Modal close button for all-projects page */
+.modal-close {
+    position: absolute !important;
+    top: 1rem !important;
+    right: 1rem !important;
+    z-index: 100 !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: none !important;
+    color: var(--secondary-light) !important;
+    font-size: 2rem !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s ease !important;
+    line-height: 1 !important;
+}
+
+.modal-close:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    transform: rotate(90deg) !important;
+}
+
+.modal-body {
+    padding: 2rem;
+    margin: 0;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+    color: #FFFEE0 !important;
+}
+
+.portfolio-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+
+/* Override any container class constraints within modal */
+.video-modal .container,
+.project-modal .container,
+.modal-content .container,
+.modal-body .container,
+.portfolio-container .container,
+.video-modal * .container,
+.modal-content * .container,
+.modal-body * .container,
+.portfolio-container * .container {
+    max-width: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    box-sizing: border-box !important;
+}
+
+/* Ensure modal content uses full width */
+.video-modal .portfolio-container,
+.project-modal .portfolio-container {
+    max-width: none !important;
+}
+
+/* Comprehensive overrides for all elements within modal */
+.video-modal * {
+    box-sizing: border-box !important;
+}
+
+.video-modal .modal-content,
+.video-modal .modal-body,
+.video-modal .portfolio-container,
+.video-modal .full-width-image,
+.video-modal .video-container,
+.video-modal .modal-project-description {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* Reset any text alignment that might cause issues */
+.video-modal .modal-body,
+.video-modal .portfolio-container,
+.video-modal .modal-project-description {
+    text-align: left !important;
+}
+
+/* Ensure images use full width */
+.video-modal .full-width-image {
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100% !important;
+    margin: 20px 0 !important;
+}
+
+/* Force modal width with highest specificity */
+.video-modal .modal-content {
+    width: 1200px !important;
+    max-width: 1200px !important;
+    min-width: 1200px !important;
+    flex: none !important;
+    flex-basis: 1200px !important;
+    transform: none !important;
+    scale: 1 !important;
+}
+
+/* Ensure modal container doesn't constrain width */
+.video-modal {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    width: 100vw !important;
+    max-width: 100vw !important;
+}
+
+.full-width-image {
+    width: 100%;
+    max-width: 100%;
+    display: block;
+    margin: 20px 0;
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    background: #000;
+    margin: 20px 0;
+    width: 100%;
+    border-radius: 0;
+}
+
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.modal-project-description {
+    color: rgba(255, 255, 255, 0.8) !important;
+    line-height: 1.8;
+    margin-top: 2rem;
+    width: 100%;
+    max-width: 100%;
+    text-align: left;
+}
+
+.modal-project-description h2 {
+    color: #FFFEE0 !important;
+    font-size: 2.5rem;
+    margin: 2rem 0 1rem;
+}
+
+.modal-project-description ul {
+    list-style: none;
+    padding: 0;
+}
+
+.modal-project-description ul li {
+    position: relative;
+    padding-left: 24px;
+    margin-bottom: 10px;
+}
+
+.modal-project-description ul li:before {
+    content: "•";
+    color: var(--primary-light) !important;
+    font-size: 1.2em;
+    position: absolute;
+    left: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+        opacity: 1;
+    }
+    to {
+        opacity: 0;
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Blue Arch Modal Specific Styling - Zero Top Space, Add Content Spacing */
+.blue-arch-portfolio-modal .modal-header {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    z-index: 1000 !important;
+    background: transparent !important;
+    border: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    min-height: auto !important;
+    width: auto !important;
+}
+
+.blue-arch-portfolio-modal .modal-content {
+    padding: 0 !important;
+    position: relative !important;
+}
+
+.blue-arch-portfolio-modal .modal-body {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.blue-arch-portfolio-modal .project-overview {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.blue-arch-portfolio-modal .full-width-image {
+    margin: 0 0 15px 0 !important;
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+}
+
+.blue-arch-portfolio-modal .video-container {
+    margin: 0 0 15px 0 !important;
+    width: 100% !important;
+}
+
+/* Remove margin from the last element */
+.blue-arch-portfolio-modal .project-overview > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Ensure first element touches the very top */
+.blue-arch-portfolio-modal .project-overview > *:first-child {
+    margin-top: 0 !important;
+}
+
+/* Style the close button as overlay */
+.blue-arch-portfolio-modal .close-modal {
+    position: relative !important;
+    top: 15px !important;
+    right: 15px !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    backdrop-filter: blur(10px) !important;
+    -webkit-backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: #FFFFFF !important;
+    font-size: 1.2rem !important;
+    width: 32px !important;
+    height: 32px !important;
+    border-radius: 50% !important;
+    cursor: pointer;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s ease;
+    line-height: 1.2;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3) !important;
+}
+
+.blue-arch-portfolio-modal .close-modal:hover {
+    background: rgba(0, 0, 0, 0.9) !important;
+    transform: scale(1.1) !important;
+}
+
+/* Custom Scrollbar for Modal */
+.modal-content::-webkit-scrollbar {
+    width: 10px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+    background: #c90033; /* brand color */
+    border-radius: 10px;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #a00028; /* darker on hover */
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+    .video-modal {
+        padding: 10px;
+    }
+
+    .modal-content {
+        max-height: 95vh;
+        border-radius: 15px;
+        width: 95vw !important;
+        max-width: 95vw !important;
+        min-width: 95vw !important;
+    }
+
+    .modal-header {
+        padding: 1.5rem;
+        border-radius: 15px 15px 0 0;
+    }
+
+    .modal-header h2 {
+        font-size: 1.25rem;
+    }
+
+    .modal-body {
+        padding: 4rem 0 1.5rem 0;
+    }
+
+    .portfolio-container {
+        padding: 0 1rem;
+    }
+
+    .close-modal {
+        width: 35px;
+        height: 35px;
+        font-size: 2.5rem;
+    }
+
+    /* Override desktop width on mobile */
+    .video-modal .modal-content {
+        width: 95vw !important;
+        max-width: 95vw !important;
+        min-width: 95vw !important;
+        flex-basis: 95vw !important;
+    }
+}
+
+/* RTL Support */
+html[dir="rtl"] .modal-project-description ul li {
+    padding-left: 0;
+    padding-right: 24px;
+}
+
+html[dir="rtl"] .modal-project-description ul li:before {
+    left: auto;
+    right: 0;
+}
+
+/* RTL modal content alignment */
+html[dir="rtl"] .video-modal .modal-body,
+html[dir="rtl"] .video-modal .portfolio-container,
+html[dir="rtl"] .video-modal .modal-project-description {
+    text-align: right !important;
+}
+
+/* Ensure RTL doesn't affect layout positioning */
+html[dir="rtl"] .video-modal .modal-content,
+html[dir="rtl"] .video-modal .modal-body,
+html[dir="rtl"] .video-modal .portfolio-container {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}
+
+/* A&C Portfolio Modal Custom Styles */
+.ac-portfolio-modal {
+    align-items: flex-start !important; /* Align to top */
+    padding: 10px 20px !important; /* Reduce top padding */
+}
+
+.ac-portfolio-modal .modal-content {
+    background: #000000 !important; /* Black background */
+    border: none !important; /* Remove border */
+    backdrop-filter: none !important; /* Remove glass effect */
+    -webkit-backdrop-filter: none !important; /* Remove glass effect */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8) !important; /* Darker shadow */
+    margin-top: 0 !important; /* Remove top margin */
+}
+
+.ac-portfolio-modal .modal-header {
+    background: transparent !important; /* Remove glass strip */
+    border-bottom: none !important; /* Remove border */
+    backdrop-filter: none !important; /* Remove glass effect */
+    -webkit-backdrop-filter: none !important; /* Remove glass effect */
+    padding: 0.5rem 1rem !important; /* Reduce padding */
+    justify-content: flex-end !important; /* Align close button to right */
+    min-height: 40px !important; /* Reduce header height */
+}
+
+.ac-portfolio-modal .modal-body {
+    padding: 0 1rem 1rem 1rem !important; /* Reduce top padding, keep side and bottom */
+}
+
+.ac-portfolio-modal .close-modal {
+    background: rgba(255, 255, 255, 0.1) !important; /* Subtle close button */
+    color: #ffffff !important; /* White close button */
+}
+
+.ac-portfolio-modal .close-modal:hover {
+    background: rgba(255, 255, 255, 0.2) !important; /* Hover effect */
+}
+
+.ac-portfolio-modal .modal-content {
+    scrollbar-color: #ffffff rgba(255, 255, 255, 0.1) !important; /* Firefox - white thumb, light track */
+    scrollbar-width: thin !important; /* Firefox */
+}
+
+/* Webkit scrollbar for Chrome/Safari */
+.ac-portfolio-modal .modal-content::-webkit-scrollbar {
+    width: 8px !important;
+}
+
+.ac-portfolio-modal .modal-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1) !important; /* Light track */
+}
+
+.ac-portfolio-modal .modal-content::-webkit-scrollbar-thumb {
+    background: #ffffff !important; /* White thumb */
+    border-radius: 4px !important;
+}
+
+.ac-portfolio-modal .modal-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.8) !important; /* Slightly transparent on hover */
+}
+
+/* Blue Arch Modal - No Header Styling */
+.blue-arch-portfolio-modal .modal-content {
+    background: #ffffff !important; /* White background */
+    backdrop-filter: blur(16px) saturate(120%) !important; /* Glass effect */
+    -webkit-backdrop-filter: blur(16px) saturate(120%) !important; /* Glass effect */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.8) !important; /* Darker shadow */
+    border-radius: 20px !important; /* Rounded corners */
+    position: relative !important;
+    max-height: 85vh !important; /* Limit height to 85% of viewport */
+    overflow-y: auto !important; /* Enable vertical scrolling */
+}
+
+.blue-arch-portfolio-modal .close-modal {
+    position: absolute !important;
+    top: 1rem !important;
+    right: 1rem !important;
+    z-index: 100 !important;
+    background: rgba(0, 0, 0, 0.8) !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 50% !important;
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 1.5rem !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s ease !important;
+}
+
+.blue-arch-portfolio-modal .close-modal:hover {
+    background: rgba(0, 0, 0, 1) !important;
+    transform: scale(1.1) !important;
+}
+
+.blue-arch-portfolio-modal .modal-body {
+    padding: 1rem !important; /* Reduce padding since no header */
+}
+
+.blue-arch-portfolio-modal .modal-content {
+    scrollbar-color: #000000 rgba(0, 0, 0, 0.1) !important; /* Firefox - black thumb, light track */
+    scrollbar-width: thin !important; /* Firefox */
+}
+
+/* Webkit scrollbar for Chrome/Safari */
+.blue-arch-portfolio-modal .modal-content::-webkit-scrollbar {
+    width: 8px !important;
+}
+
+.blue-arch-portfolio-modal .modal-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05) !important; /* Light track */
+}
+
+.blue-arch-portfolio-modal .modal-content::-webkit-scrollbar-thumb {
+    background: #000000 !important; /* Black thumb */
+    border-radius: 4px !important;
+}
+
+.blue-arch-portfolio-modal .modal-content::-webkit-scrollbar-thumb:hover {
+    background: #333333 !important; /* Dark gray on hover */
+}
+
+/* Nissan Modal Background and Scrollbar Styling */
+.nissan-portfolio-modal .modal-content {
+    background: #c90033 !important; /* Red background for Nissan modal */
+    scrollbar-color: #ffffff rgba(255, 255, 255, 0.1) !important; /* Firefox - white thumb, light track */
+    scrollbar-width: thin !important; /* Firefox */
+    position: relative !important; /* Ensure absolute positioning works for header */
+}
+
+/* Nissan Modal - Position the modal header absolutely over the image */
+.nissan-portfolio-modal .modal-header {
+    position: absolute !important;
+    top: 0 !important;
+    right: 0 !important;
+    z-index: 1000 !important;
+    background: none !important;
+    border: none !important;
+    padding: 1rem !important;
+    width: auto !important;
+}
+
+/* Nissan Modal - Hide the title in header but keep the close button */
+.nissan-portfolio-modal .modal-header h2 {
+    display: none !important;
+}
+
+/* Nissan Modal - Style the close button to be visible over the image */
+.nissan-portfolio-modal .close-modal {
+    background: rgba(255, 255, 255, 0.2) !important;
+    backdrop-filter: blur(10px) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    color: #FFFFFF !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    font-size: 20px !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.nissan-portfolio-modal .close-modal:hover {
+    background: rgba(255, 255, 255, 0.3) !important;
+    color: #FFFFFF !important;
+    transform: rotate(90deg) !important;
+}
+
+/* Nissan Modal - Remove padding from modal body to attach image to top */
+.nissan-portfolio-modal .modal-body {
+    padding: 0 !important;
+}
+
+/* Nissan Modal - Top image sticks to the very top edge */
+.nissan-portfolio-modal .top-image-container {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+.nissan-portfolio-modal .top-image-container img {
+    border-radius: 20px 20px 0 0 !important; /* Match modal's top border radius */
+    margin: 0 !important;
+}
+
+/* Nissan Modal - Optimize content to use full width */
+.nissan-portfolio-modal .portfolio-container {
+    padding: 1rem !important; /* Reduced padding for more content space */
+    padding-top: 0 !important; /* No top padding since image is at the top */
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+}
+
+/* Nissan Modal - Ensure all content elements use full width */
+.nissan-portfolio-modal .full-width-image,
+.nissan-portfolio-modal .video-container,
+.nissan-portfolio-modal .modal-project-description {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* Nissan Modal - Optimize text content width */
+.nissan-portfolio-modal .modal-project-description {
+    padding: 0 !important;
+    margin: 1rem 0 !important;
+}
+
+/* Nissan Modal - Ensure images use full available width */
+.nissan-portfolio-modal .full-width-image {
+    margin: 1rem 0 !important;
+    border-radius: 8px !important;
+}
+
+/* Webkit scrollbar for Chrome/Safari */
+.nissan-portfolio-modal .modal-content::-webkit-scrollbar {
+    width: 8px !important;
+}
+
+.nissan-portfolio-modal .modal-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1) !important; /* Light track */
+}
+
+.nissan-portfolio-modal .modal-content::-webkit-scrollbar-thumb {
+    background: #ffffff !important; /* White thumb */
+    border-radius: 4px !important;
+}
+
+.nissan-portfolio-modal .modal-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.8) !important; /* Slightly transparent on hover */
+}
+
+/* Happy Cloud Modal Styling */
+.generic-portfolio-modal .modal-content {
+    background: #ffffff !important; /* White background for Happy Cloud */
+    color: #212529 !important; /* Dark text for readability */
+    scrollbar-color: #000000 rgba(0, 0, 0, 0.1) !important; /* Firefox - black thumb, light track */
+    scrollbar-width: thin !important; /* Firefox */
+}
+
+/* Webkit scrollbar for Chrome/Safari - Happy Cloud */
+.generic-portfolio-modal .modal-content::-webkit-scrollbar {
+    width: 8px !important;
+}
+
+.generic-portfolio-modal .modal-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1) !important; /* Light gray track */
+}
+
+.generic-portfolio-modal .modal-content::-webkit-scrollbar-thumb {
+    background: #000000 !important; /* Black thumb */
+    border-radius: 4px !important;
+}
+
+.generic-portfolio-modal .modal-content::-webkit-scrollbar-thumb:hover {
+    background: #333333 !important; /* Dark gray on hover */
+}
+
+/* Happy Cloud Modal Header Styling */
+.generic-portfolio-modal .modal-header {
+    background: rgba(0, 0, 0, 0.05) !important; /* Light gray header background */
+    color: #212529 !important; /* Dark text */
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) !important;
+}
+
+.generic-portfolio-modal .modal-header h2 {
+    color: #212529 !important; /* Dark text for title */
+}
+
+.generic-portfolio-modal .close-modal {
+    background: #212529 !important; /* Dark close button */
+    color: #ffffff !important; /* White X */
+}
+
+.generic-portfolio-modal .close-modal:hover {
+    background: #000000 !important; /* Black on hover */
+    color: #ffffff !important;
+}
+
+/* Happy Cloud Modal Styling */
+.happy-cloud-portfolio-modal .modal-content {
+    background: #ffffff !important; /* White background */
+    color: #000000 !important; /* Black text for contrast */
+    scrollbar-color: #000000 rgba(0, 0, 0, 0.05) !important; /* Firefox - dark thumb, light track */
+    scrollbar-width: thin !important; /* Firefox */
+}
+
+/* Webkit scrollbar for Chrome/Safari */
+.happy-cloud-portfolio-modal .modal-content::-webkit-scrollbar {
+    width: 8px !important;
+}
+
+.happy-cloud-portfolio-modal .modal-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.05) !important; /* Light track */
+}
+
+.happy-cloud-portfolio-modal .modal-content::-webkit-scrollbar-thumb {
+    background: #000000 !important; /* Dark thumb */
+    border-radius: 4px !important;
+}
+
+.happy-cloud-portfolio-modal .modal-content::-webkit-scrollbar-thumb:hover {
+    background: #333333 !important; /* Dark gray on hover */
+}
+
+/* Happy Cloud Modal Close Button Styling */
+.happy-cloud-portfolio-modal .modal-close {
+    background: #000000 !important; /* Black circle background */
+    color: #ffffff !important; /* White X */
+}
+
+.happy-cloud-portfolio-modal .modal-close:hover {
+    background: #333333 !important; /* Dark gray on hover */
+    color: #ffffff !important; /* Keep white X */
+    transform: rotate(90deg) !important;
+}
+
+/* Happy Cloud Modal Header Styling */
+.happy-cloud-portfolio-modal .modal-header {
+    background: transparent !important;
+    color: #000000 !important; /* Black text for white background */
+}
+
+.happy-cloud-portfolio-modal .modal-header h2 {
+    color: #000000 !important; /* Black title text */
+}
+
+/* Banafa for Oud Modal - Full Width Content */
+.video-modal .modal-content:has(.banafa-close) .modal-body {
+    padding: 0 !important; /* Remove all padding for full width */
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Ensure Banafa for Oud portfolio container uses full width */
+.video-modal .modal-content:has(.banafa-close) .portfolio-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+/* Ensure Banafa for Oud images use full width */
+.video-modal .modal-content:has(.banafa-close) .full-width-image {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    border-radius: 0 !important; /* Remove border radius for full edge-to-edge */
+}
+
+/* Ensure Banafa for Oud video containers use full width */
+.video-modal .modal-content:has(.banafa-close) .video-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border-radius: 0 !important;
+}
+
+/* NCB Event Coverage Modal - Minimal Padding with Controlled Spacing */
+.ncb-portfolio-container {
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+}
+
+.ncb-image {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 15px 0 !important;
+    padding: 0 !important;
+    display: block !important;
+    border-radius: 0 !important;
+}
+
+.ncb-video-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 0 15px 0 !important;
+    padding: 0 !important;
+    position: relative !important;
+    padding-bottom: 56.25% !important; /* 16:9 aspect ratio */
+    height: 0 !important;
+    overflow: hidden !important;
+}
+
+.ncb-video-container iframe {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+}
+
+/* Remove margin from the last element */
+.ncb-portfolio-container > *:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Ensure first element touches the very top */
+.ncb-portfolio-container > *:first-child {
+    margin-top: 0 !important;
+}
+
+/* Override modal body padding for NCB modal */
+.video-modal .modal-content:has(.ncb-portfolio-container) .modal-body {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Banafa for Oud Modal Scrollbar Styling - White */
+.video-modal .modal-content:has(.banafa-close) {
+    scrollbar-color: #ffffff rgba(255, 255, 255, 0.1) !important; /* Firefox - white thumb, light track */
+    scrollbar-width: thin !important; /* Firefox */
+}
+
+/* Webkit scrollbar for Chrome/Safari - Banafa for Oud */
+.video-modal .modal-content:has(.banafa-close)::-webkit-scrollbar {
+    width: 8px !important;
+}
+
+.video-modal .modal-content:has(.banafa-close)::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1) !important; /* Light track */
+}
+
+.video-modal .modal-content:has(.banafa-close)::-webkit-scrollbar-thumb {
+    background: #ffffff !important; /* White thumb */
+    border-radius: 4px !important;
+}
+
+.video-modal .modal-content:has(.banafa-close)::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.8) !important; /* Slightly transparent white on hover */
+}
+
+/* Banafa for Oud Modal Scrollbar Styling for All Projects Page */
+.banafa-portfolio-modal .modal-content {
+    scrollbar-color: #ffffff rgba(255, 255, 255, 0.1) !important; /* Firefox - white thumb, light track */
+    scrollbar-width: thin !important; /* Firefox */
+}
+
+/* Webkit scrollbar for Chrome/Safari - Banafa for Oud All Projects */
+.banafa-portfolio-modal .modal-content::-webkit-scrollbar {
+    width: 8px !important;
+}
+
+.banafa-portfolio-modal .modal-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1) !important; /* Light track */
+}
+
+.banafa-portfolio-modal .modal-content::-webkit-scrollbar-thumb {
+    background: #ffffff !important; /* White thumb */
+    border-radius: 4px !important;
+}
+
+.banafa-portfolio-modal .modal-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.8) !important; /* Slightly transparent white on hover */
+}
+
+/* Make the last image in Banafa for Oud modal touch the bottom */
+.video-modal .modal-content:has(.banafa-close) .portfolio-container img:last-child,
+.banafa-portfolio-modal .modal-content .portfolio-container img:last-child {
+    margin-bottom: 0 !important;
+    border-radius: 0 0 20px 20px !important; /* Match modal's bottom border radius */
+}
+
+/* Ensure the last image touches the very bottom edge */
+.video-modal .modal-content:has(.banafa-close) .modal-body,
+.banafa-portfolio-modal .modal-content .modal-body {
+    padding-bottom: 0 !important;
+}
+
+/* Ensure the portfolio container has no bottom margin */
+.video-modal .modal-content:has(.banafa-close) .portfolio-container,
+.banafa-portfolio-modal .modal-content .portfolio-container {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+/* Pizza Modal - Make first image stick to top and last image stick to bottom */
+.pizza-modal-container {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+/* Pizza Modal - Hide the modal header to make image stick to very top */
+.modal-content:has(.pizza-modal-container) .modal-header {
+    display: none !important;
+}
+
+/* Pizza Modal - Overlay close button positioned on top of the image */
+.video-modal .pizza-close {
+    position: absolute !important;
+    top: 20px !important;
+    right: 20px !important;
+    z-index: 1000 !important;
+    background: rgba(0, 0, 0, 0.7) !important;
+    border: none !important;
+    color: #ffffff !important;
+    font-size: 2rem !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    cursor: pointer;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s ease;
+    line-height: 1.2;
+}
+
+.video-modal .pizza-close:hover {
+    background: rgba(0, 0, 0, 0.9) !important;
+    transform: rotate(90deg);
+}
+
+/* Pizza Modal - Top image sticks to the very top edge */
+.pizza-top-image {
+    margin-top: 0 !important;
+    border-radius: 20px 20px 0 0 !important; /* Match modal's top border radius */
+}
+
+/* Pizza Modal - Bottom image sticks to the bottom */
+.pizza-bottom-image {
+    margin-bottom: 0 !important;
+    border-radius: 0 0 20px 20px !important; /* Match modal's bottom border radius */
+}
+
+/* Pizza Modal - Remove padding from modal body when pizza container is present */
+.modal-body:has(.pizza-modal-container) {
+    padding: 0 !important;
+}
+
+/* Pizza Modal - Ensure container takes full width and height */
+.modal-content:has(.pizza-modal-container) .modal-body {
+    padding: 0 !important;
+}
+
+.modal-content:has(.pizza-modal-container) .pizza-modal-container {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Pizza Modal Scrollbar Styling - White */
+.pizza-portfolio-modal .modal-content {
+    scrollbar-color: #ffffff rgba(255, 255, 255, 0.1) !important; /* Firefox - white thumb, light track */
+    scrollbar-width: thin !important; /* Firefox */
+}
+
+/* Webkit scrollbar for Chrome/Safari - Pizza Modal */
+.pizza-portfolio-modal .modal-content::-webkit-scrollbar {
+    width: 8px !important;
+}
+
+.pizza-portfolio-modal .modal-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1) !important; /* Light track */
+}
+
+.pizza-portfolio-modal .modal-content::-webkit-scrollbar-thumb {
+    background: #ffffff !important; /* White thumb */
+    border-radius: 4px !important;
+}
+
+.pizza-portfolio-modal .modal-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.8) !important; /* Slightly transparent white on hover */
+}
+
+/* Coffee Roastery Modal - Video Only Display */
+.coffee-roastery-modal .modal-overlay {
+    background: rgba(0, 0, 0, 0.95) !important;
+}
+
+.coffee-roastery-modal .modal-content {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    width: 90vw !important;
+    max-width: 90vw !important;
+    height: auto !important;
+    border-radius: 0 !important;
+}
+
+.coffee-roastery-modal .modal-header {
+    display: none !important;
+}
+
+.coffee-roastery-modal .modal-body {
+    padding: 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+}
+
+.coffee-roastery-modal .close-modal {
+    position: fixed !important;
+    top: 20px !important;
+    right: 20px !important;
+    z-index: 10001 !important;
+    background: rgba(0, 0, 0, 0.7) !important;
+    color: #ffffff !important;
+    border: none !important;
+    font-size: 2rem !important;
+    width: 50px !important;
+    height: 50px !important;
+    border-radius: 50% !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    transition: all 0.3s ease !important;
+    line-height: 1 !important;
+}
+
+.coffee-roastery-modal .close-modal:hover {
+    background: rgba(0, 0, 0, 0.9) !important;
+    transform: rotate(90deg) !important;
+}
+
+.coffee-roastery-modal .video-container {
+    margin: 0 !important;
+    border-radius: 0 !important;
+    width: 100% !important;
+    height: 50.625vw !important; /* 16:9 aspect ratio for 90vw width */
+    max-height: 90vh !important;
+    position: relative !important;
+}
+
+.coffee-roastery-modal .video-container iframe {
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+}
+
+/* Jetour Modal Styles */
+.jetour-portfolio-container {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.jetour-image {
+    width: 100% !important;
+    height: auto !important;
+    display: block !important;
+    margin-bottom: 15px !important;
+    border-radius: 8px !important;
+}
+
+.jetour-image:first-child {
+    margin-top: 0 !important;
+}
+
+.jetour-image:last-child {
+    margin-bottom: 0 !important;
+}
+
+.jetour-video-container {
+    position: relative !important;
+    width: 100% !important;
+    height: 0 !important;
+    padding-bottom: 56.25% !important; /* 16:9 aspect ratio */
+    margin-bottom: 15px !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+}
+
+.jetour-video-container iframe {
+    position: absolute !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    border: none !important;
+}

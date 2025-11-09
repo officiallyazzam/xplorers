@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Quote - Xplorers Creative</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/custom-quote.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Complete Header and Footer Styling */
+        
+        /* Language Switcher */
+        .main-header .navbar .nav-container .language-switcher {
+            display: flex !important;
+            gap: 0.5rem !important;
+            background: linear-gradient(135deg, #f0f4f8, rgba(141, 163, 199, 0.2)) !important;
+            padding: 4px !important;
+            border-radius: 25px !important;
+            border: 1px solid #8da3c7 !important;
+            height: 40px !important;
+            align-items: center !important;
+            flex-shrink: 0 !important;
+        }
+
+        .main-header .navbar .nav-container .language-switcher .lang-btn {
+            padding: 0.5rem 1rem !important;
+            border: none !important;
+            background: transparent !important;
+            color: #445c80 !important;
+            cursor: pointer !important;
+            border-radius: 20px !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            transition: all 0.3s ease !important;
+            height: 32px !important;
+            line-height: 1 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-transform: none !important;
+            letter-spacing: normal !important;
+            transform: none !important;
+            box-shadow: none !important;
+            text-decoration: none !important;
+        }
+
+        .main-header .navbar .nav-container .language-switcher .lang-btn.active {
+            background: linear-gradient(135deg, #445c80, #6b7fa3) !important;
+            color: #f0f4f8 !important;
+            transform: none !important;
+            text-decoration: none !important;
+        }
+
+        /* Header and Navigation Styling */
+        .main-header {
+            background: linear-gradient(180deg, #1f2a3d 0%, #445c80 100%) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3) !important;
+            position: relative !important;
+            z-index: 1000 !important;
+        }
+
+        .navbar {
+            padding: 1rem 0 !important;
+        }
+
+        .nav-container {
+            max-width: 1200px !important;
+            margin: 0 auto !important;
+            padding: 0 20px !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            gap: 2rem !important;
+        }
+
+        .logo {
+            display: flex !important;
+            align-items: center !important;
+            text-decoration: none !important;
+            font-size: 1.5rem !important;
+            font-weight: 700 !important;
+            color: #f0f4f8 !important;
+            flex-shrink: 0 !important;
+        }
+
+        .logo-img {
+            height: 45px !important;
+            width: auto !important;
+            filter: brightness(0) invert(1) !important;
+            opacity: 0.9 !important;
+        }
+
+        .nav-menu {
+            display: flex !important;
+            gap: 2rem !important;
+            align-items: center !important;
+        }
+
+        .nav-link {
+            color: #f0f4f8 !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            padding: 0.5rem 1rem !important;
+            border: none !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            transition: color 0.3s ease !important;
+            position: relative !important;
+        }
+
+        .nav-link:hover {
+            color: #8da3c7 !important;
+            background: transparent !important;
+            transform: none !important;
+        }
+
+        .nav-link.active {
+            color: #8da3c7 !important;
+            background: transparent !important;
+        }
+
+        /* Footer Styling */
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            height: 100% !important;
+        }
+
+        body {
+            display: flex !important;
+            flex-direction: column !important;
+            min-height: 100vh !important;
+        }
+
+        main, .container {
+            flex: 1 !important;
+        }
+
+        .main-footer {
+            background: linear-gradient(135deg, #1f2a3d 0%, #445c80 100%) !important;
+            color: #f0f4f8 !important;
+            padding: 3rem 0 2rem !important;
+            margin-top: auto !important;
+            position: relative !important;
+            margin-bottom: 0 !important;
+        }
+
+        .footer-content {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 1.5rem !important;
+            text-align: center !important;
+        }
+
+        .footer-logo {
+            margin-bottom: 1rem !important;
+        }
+
+        .footer-logo-img {
+            height: 50px !important;
+            width: auto !important;
+            filter: brightness(0) invert(1) !important;
+            opacity: 0.9 !important;
+        }
+
+        .footer-social {
+            display: flex !important;
+            gap: 1.5rem !important;
+            margin-bottom: 1rem !important;
+        }
+
+        .social-link {
+            width: 40px !important;
+            height: 40px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background: rgba(141, 163, 199, 0.1) !important;
+            border-radius: 50% !important;
+            transition: all 0.3s ease !important;
+            color: #f0f4f8 !important;
+            text-decoration: none !important;
+        }
+
+        .social-link:hover {
+            background: #8da3c7 !important;
+            transform: translateY(-3px) !important;
+        }
+
+        .social-link svg {
+            width: 20px !important;
+            height: 20px !important;
+            fill: currentColor !important;
+        }
+
+        .social-link:hover svg {
+            fill: #445c80 !important;
+        }
+
+        .footer-links {
+            display: flex !important;
+            gap: 2rem !important;
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+        }
+
+        .footer-links a {
+            color: #f0f4f8 !important;
+            text-decoration: none !important;
+            transition: color 0.3s ease !important;
+        }
+
+        .footer-links a:hover {
+            color: #8da3c7 !important;
+        }
+
+        /* RTL Support */
+        html[dir="rtl"] .nav-container {
+            flex-direction: row-reverse !important;
+        }
+
+        html[dir="rtl"] .nav-menu {
+            flex-direction: row-reverse !important;
+        }
+
+        html[dir="rtl"] .language-switcher {
+            order: -1 !important;
+        }
+
+        html[dir="rtl"] .logo {
+            order: 1 !important;
+        }
+
+        html[dir="rtl"] .nav-menu {
+            order: 0 !important;
+            flex-direction: row-reverse !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+<header class="main-header">
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="images/xplorers logo.svg" alt="Xplorers Creative Logo" class="logo-img">
+            </a>
+            
+            <div class="nav-menu">
+                <a href="our-work.html" class="nav-link" data-en="Our Work" data-ar="أعمالنا">Our Work</a>
+                <a href="services.html" class="nav-link" data-en="Services" data-ar="الخدمات">Services</a>
+                <a href="process.html" class="nav-link" data-en="Our Process" data-ar="عمليتنا">Our Process</a>
+                <a href="contact.html" class="nav-link" data-en="Contact" data-ar="اتصل بنا">Contact</a>
+            </div>
+            
+            <div class="language-switcher">
+                <button class="lang-btn active" data-lang="en">EN</button>
+                <button class="lang-btn" data-lang="ar">عربي</button>
+            </div>
+            
+        </div>
+    </nav>
+</header>
+
+    <!-- Quote Form Section -->
+    <section class="quote-section">
+        <div class="white-section">
+            <div class="container">
+                <div class="quote-form-container">
+                    <!-- Help Box -->
+                    <div class="help-box">
+                        <h3>Don't know what you're looking for?</h3>
+                        <p>No worries! We're here to help you figure it out.</p>
+                        <a href="process.html" class="help-link">Browse All Services →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-background">
+            <div class="container">
+                <div class="quote-form-container">
+                    <form id="customQuoteForm" class="custom-quote-form">
+                    <!-- Contact Information -->
+                    <div class="form-section">
+                        <h2 class="section-title">Your Information</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Full Name <span class="required">*</span></label>
+                                <input type="text" class="form-input" name="fullName" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Company Name</label>
+                                <input type="text" class="form-input" name="companyName">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Email Address <span class="required">*</span></label>
+                                <input type="email" class="form-input" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Phone Number <span class="required">*</span></label>
+                                <input type="tel" class="form-input" name="phone" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Type -->
+                    <div class="form-section">
+                        <h2 class="section-title">Project Type</h2>
+                        <p class="section-description">Select all services you're interested in</p>
+                        <div class="service-checkboxes">
+                            <label class="service-checkbox">
+                                <input type="checkbox" name="services" value="videography">
+                                <span class="checkbox-label">
+                                    <span class="checkbox-icon"></span>
+                                    Videography
+                                </span>
+                            </label>
+                            <label class="service-checkbox">
+                                <input type="checkbox" name="services" value="photography">
+                                <span class="checkbox-label">
+                                    <span class="checkbox-icon"></span>
+                                    Photography
+                                </span>
+                            </label>
+                            <label class="service-checkbox">
+                                <input type="checkbox" name="services" value="video-editing">
+                                <span class="checkbox-label">
+                                    <span class="checkbox-icon"></span>
+                                    Video Editing
+                                </span>
+                            </label>
+                            <label class="service-checkbox">
+                                <input type="checkbox" name="services" value="motion-graphics">
+                                <span class="checkbox-label">
+                                    <span class="checkbox-icon"></span>
+                                    Motion Graphics
+                                </span>
+                            </label>
+                            <label class="service-checkbox">
+                                <input type="checkbox" name="services" value="logo-design">
+                                <span class="checkbox-label">
+                                    <span class="checkbox-icon"></span>
+                                    Logo & Branding
+                                </span>
+                            </label>
+                            <label class="service-checkbox">
+                                <input type="checkbox" name="services" value="social-media">
+                                <span class="checkbox-label">
+                                    <span class="checkbox-icon"></span>
+                                    Social Media Management
+                                </span>
+                            </label>
+                            <label class="service-checkbox">
+                                <input type="checkbox" name="services" value="website">
+                                <span class="checkbox-label">
+                                    <span class="checkbox-icon"></span>
+                                    Website Development
+                                </span>
+                            </label>
+                            <label class="service-checkbox">
+                                <input type="checkbox" name="services" value="other">
+                                <span class="checkbox-label">
+                                    <span class="checkbox-icon"></span>
+                                    Other
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Project Details -->
+                    <div class="form-section">
+                        <h2 class="section-title">Project Details</h2>
+                        <div class="form-group">
+                            <label class="form-label">Project Description <span class="required">*</span></label>
+                            <textarea class="form-textarea" name="description" rows="6" 
+                                      placeholder="Tell us about your project. What do you want to achieve? What's your vision?" required></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">Project Timeline</label>
+                                <select class="form-select" name="timeline">
+                                    <option value="">Select Timeline</option>
+                                    <option value="asap">ASAP (Rush Delivery +50%)</option>
+                                    <option value="1week">Within 1 Week</option>
+                                    <option value="2weeks">Within 2 Weeks</option>
+                                    <option value="1month">Within 1 Month</option>
+                                    <option value="flexible">Flexible</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">Budget Range</label>
+                                <select class="form-select" name="budget">
+                                    <option value="">Select Budget</option>
+                                    <option value="under5k">Under SAR 5,000</option>
+                                    <option value="5k-10k">SAR 5,000 - 10,000</option>
+                                    <option value="10k-25k">SAR 10,000 - 25,000</option>
+                                    <option value="25k-50k">SAR 25,000 - 50,000</option>
+                                    <option value="over50k">Over SAR 50,000</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Information -->
+                    <div class="form-section">
+                        <h2 class="section-title">Additional Information</h2>
+                        <div class="form-group">
+                            <label class="form-label">How did you hear about us?</label>
+                            <select class="form-select" name="referral">
+                                <option value="">Please Select</option>
+                                <option value="google">Google Search</option>
+                                <option value="social">Social Media</option>
+                                <option value="referral">Friend/Colleague Referral</option>
+                                <option value="previous">Previous Client</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">Special Requirements or Questions</label>
+                            <textarea class="form-textarea" name="specialRequirements" rows="4" 
+                                      placeholder="Any specific requirements, questions, or additional information you'd like to share?"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="file-upload-label">
+                                <input type="file" name="attachments" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                                <span class="file-upload-text">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                                        <polyline points="17 8 12 3 7 8"/>
+                                        <line x1="12" y1="3" x2="12" y2="15"/>
+                                    </svg>
+                                    Attach Files (Optional)
+                                    <span class="file-types">PDF, DOC, DOCX, JPG, PNG (Max 10MB)</span>
+                                </span>
+                            </label>
+                            <div id="fileList" class="file-list"></div>
+                        </div>
+                    </div>
+
+                    <!-- Goals Section -->
+                    <div class="form-section">
+                        <h2 class="section-title">Your Goals</h2>
+                        <div class="form-group">
+                            <label class="form-label">What are your main goals with this project? <span class="required">*</span></label>
+                            <div class="goals-checkboxes">
+                                <label class="goal-checkbox">
+                                    <input type="checkbox" name="goals" value="brand-awareness">
+                                    <span class="checkbox-label">
+                                        <span class="checkbox-icon"></span>
+                                        Increase Brand Awareness
+                                    </span>
+                                </label>
+                                <label class="goal-checkbox">
+                                    <input type="checkbox" name="goals" value="sales">
+                                    <span class="checkbox-label">
+                                        <span class="checkbox-icon"></span>
+                                        Boost Sales
+                                    </span>
+                                </label>
+                                <label class="goal-checkbox">
+                                    <input type="checkbox" name="goals" value="engagement">
+                                    <span class="checkbox-label">
+                                        <span class="checkbox-icon"></span>
+                                        Improve Customer Engagement
+                                    </span>
+                                </label>
+                                <label class="goal-checkbox">
+                                    <input type="checkbox" name="goals" value="launch">
+                                    <span class="checkbox-label">
+                                        <span class="checkbox-icon"></span>
+                                        Launch New Product/Service
+                                    </span>
+                                </label>
+                                <label class="goal-checkbox">
+                                    <input type="checkbox" name="goals" value="rebrand">
+                                    <span class="checkbox-label">
+                                        <span class="checkbox-icon"></span>
+                                        Rebrand/Refresh Image
+                                    </span>
+                                </label>
+                                <label class="goal-checkbox">
+                                    <input type="checkbox" name="goals" value="event">
+                                    <span class="checkbox-label">
+                                        <span class="checkbox-icon"></span>
+                                        Document Event
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">How much are you willing to invest in achieving these goals?</label>
+                            <input type="text" class="form-input" name="investment" placeholder="e.g., SAR 10,000 or 'Open to suggestions'">
+                        </div>
+                    </div>
+
+                    <!-- Submit Section -->
+                    <div class="form-section submit-section">
+                        <div class="privacy-notice">
+                            <p>By submitting this form, you agree to our <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>.</p>
+                            <p>We'll get back to you within 24 hours with a custom quote.</p>
+                        </div>
+                        
+                        <button type="submit" class="form-submit">
+                            <span>Request Custom Quote</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="5" y1="12" x2="19" y2="12"/>
+                                <polyline points="12 5 19 12 12 19"/>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal" style="display: none;">
+        <div class="success-modal-content">
+            <svg class="success-icon" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M9 12l2 2 4-4"/>
+            </svg>
+            <h2>Quote Request Submitted!</h2>
+            <p>Thank you for your interest. Our team will review your requirements and get back to you within 24 hours with a custom quote.</p>
+            <button onclick="closeSuccessModal()" class="success-close-btn">Got it!</button>
+        </div>
+    </div>
+
+
+
+    <script src="js/language-switcher.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/custom-quote.js"></script>
+</body>
+</html>

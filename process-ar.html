@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عمليتنا - Xplorers Creative</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/process.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Language Switcher - Exact Copy from Home Page with Proper Dimensions */
+        .language-switcher {
+            display: flex !important;
+            gap: 0.5rem !important;
+            background: linear-gradient(135deg, var(--secondary-light), rgba(141, 163, 199, 0.2)) !important;
+            padding: 4px !important;
+            border-radius: 25px !important;
+            border: 1px solid var(--primary-light) !important;
+            height: 40px !important;
+            align-items: center !important;
+            flex-shrink: 0 !important;
+        }
+
+        .nav-link {
+            color: #f0f4f8 !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            padding: 0.5rem 1rem !important;
+            border: none !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            transition: color 0.3s ease !important;
+            position: relative !important;
+        }
+
+        .nav-link:hover {
+            color: #8da3c7 !important;
+            background: transparent !important;
+            transform: none !important;
+        }
+
+        .nav-link.active {
+            color: #8da3c7 !important;
+            background: transparent !important;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary-medium)) !important;
+            color: var(--secondary-light) !important;
+            transform: none !important;
+        }
+
+        /* RTL Support for Language Switcher */
+        html[dir="rtl"] .main-header .navbar .nav-container {
+            flex-direction: row-reverse !important;
+        }
+
+        html[dir="rtl"] .main-header .navbar .nav-container .nav-menu {
+            flex-direction: row-reverse !important;
+        }
+
+        html[dir="rtl"] .nav-container {
+            flex-direction: row-reverse !important;
+        }
+
+        html[dir="rtl"] .nav-menu {
+            flex-direction: row-reverse !important;
+        }
+
+        /* Force RTL layout for navigation */
+        [dir="rtl"] .nav-container {
+            flex-direction: row-reverse !important;
+            justify-content: space-between !important;
+        }
+
+        [dir="rtl"] .nav-menu {
+            flex-direction: row-reverse !important;
+        }
+
+        /* Additional RTL specificity */
+        body[dir="rtl"] .nav-container,
+        html[dir="rtl"] body .nav-container {
+            flex-direction: row-reverse !important;
+        }
+
+        body[dir="rtl"] .nav-menu,
+        html[dir="rtl"] body .nav-menu {
+            flex-direction: row-reverse !important;
+        }
+
+        /* Direct RTL fix - Force language switcher to appear first (left) */
+        html[dir="rtl"] .language-switcher {
+            order: -1 !important;
+        }
+
+        html[dir="rtl"] .logo {
+            order: 1 !important;
+        }
+
+        html[dir="rtl"] .nav-menu {
+            order: 0 !important;
+            flex-direction: row-reverse !important;
+        }
+
+        .lang-btn:hover {
+            transform: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index-ar.html" class="logo">
+                    <img src="images/xplorers logo.svg" alt="Xplorers Creative Logo" class="logo-img home-logo" style="height: 45px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;">
+                </a>
+                
+                <div class="nav-menu">
+                    <a href="our-work-ar.html" class="nav-link">أعمالنا</a>
+                    <a href="services-ar.html" class="nav-link">خدماتنا</a>
+                    <a href="process-ar.html" class="nav-link">عمليتنا</a>
+                    <a href="contact-ar.html" class="nav-link">اتصل بنا</a>
+                </div>
+                
+                <div class="language-switcher">
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn active" data-lang="ar">عربي</button>
+                </div>
+                
+            </div>
+        </nav>
+    </header>
+
+    <!-- Interest Selection -->
+    <section class="interest-section">
+        <div class="container">
+            <div class="interest-prompt">
+                <h2>ما الذي يهمك؟</h2>
+                <p>اختر الخدمات التي تريد معرفة المزيد عنها، أو تصفح الكل</p>
+                
+                <div class="interest-options">
+                    <button class="interest-btn active" data-filter="all">
+                        <span class="interest-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <circle cx="12" cy="12" r="6"/>
+                                <circle cx="12" cy="12" r="2"/>
+                            </svg>
+                        </span>
+                        جميع الخدمات
+                    </button>
+                    <button class="interest-btn" data-filter="video-photo">
+                        <span class="interest-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="23 7 16 12 23 17 23 7"/>
+                                <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                            </svg>
+                        </span>
+                        التصوير والفيديو
+                    </button>
+                    <button class="interest-btn" data-filter="design">
+                        <span class="interest-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+                                <path d="M15 5l4 4"/>
+                            </svg>
+                        </span>
+                        التصميم والهوية
+                    </button>
+                    <button class="interest-btn" data-filter="digital">
+                        <span class="interest-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                                <line x1="8" y1="21" x2="16" y2="21"/>
+                                <line x1="12" y1="17" x2="12" y2="21"/>
+                            </svg>
+                        </span>
+                        التسويق الرقمي
+                    </button>
+                    <button class="interest-btn" data-filter="web">
+                        <span class="interest-icon">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polyline points="16 18 22 12 16 6"/>
+                                <polyline points="8 6 2 12 8 18"/>
+                            </svg>
+                        </span>
+                        تطوير المواقع
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Timeline -->
+    <section class="process-timeline-section">
+        <div class="container">
+            <h2 class="section-title">كيف نعمل</h2>
+            
+            <div class="process-timeline">
+                <!-- Step 1 -->
+                <div class="process-step" data-category="all" data-step="1">
+                    <div class="step-number">٠١</div>
+                    <div class="step-content">
+                        <h3>الاكتشاف والاستشارة</h3>
+                        <p>نبدأ بفهم رؤيتك وأهدافك ومتطلباتك من خلال استشارة مفصلة.</p>
+                        <div class="step-duration">المدة: ١-٢ يوم</div>
+                        <a href="#" class="info-link" onclick="showStepDetails('1'); return false;">عرض التفاصيل</a>
+                        <button class="view-details-btn" onclick="openProcessModal('1')">اعرف المزيد</button>
+                    </div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="process-step" data-category="all" data-step="2">
+                    <div class="step-number">٠٢</div>
+                    <div class="step-content">
+                        <h3>الاستراتيجية والتخطيط</h3>
+                        <p>نطور استراتيجية شاملة مخصصة لاحتياجاتك وأهدافك المحددة.</p>
+                        <div class="step-duration">المدة: ٢-٣ أيام</div>
+                        <a href="#" class="info-link" onclick="showStepDetails('2'); return false;">عرض التفاصيل</a>
+                        <button class="view-details-btn" onclick="openProcessModal('2')">اعرف المزيد</button>
+                    </div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="process-step" data-category="all" data-step="3">
+                    <div class="step-number">٠٣</div>
+                    <div class="step-content">
+                        <h3>الإنتاج والإبداع</h3>
+                        <p>يقوم فريقنا بتحويل رؤيتك إلى واقع مع تنفيذ احترافي واهتمام بالتفاصيل.</p>
+                        <div class="step-duration">المدة: تختلف حسب المشروع</div>
+                        <a href="#" class="info-link" onclick="showStepDetails('3'); return false;">عرض التفاصيل</a>
+                        <button class="view-details-btn" onclick="openProcessModal('3')">اعرف المزيد</button>
+                    </div>
+                </div>
+
+                <!-- Step 4 -->
+                <div class="process-step" data-category="all" data-step="4">
+                    <div class="step-number">٠٤</div>
+                    <div class="step-content">
+                        <h3>المراجعة والتحسين</h3>
+                        <p>نعمل معك لإتقان كل التفاصيل حتى تكون راضيًا تمامًا.</p>
+                        <div class="step-duration">المدة: ٢-٥ أيام</div>
+                        <a href="#" class="info-link" onclick="showStepDetails('4'); return false;">عرض التفاصيل</a>
+                        <button class="view-details-btn" onclick="openProcessModal('4')">اعرف المزيد</button>
+                    </div>
+                </div>
+
+                <!-- Step 5 -->
+                <div class="process-step" data-category="all" data-step="5">
+                    <div class="step-number">٠٥</div>
+                    <div class="step-content">
+                        <h3>التسليم والدعم</h3>
+                        <p>نقدم المنتج النهائي ونوفر الدعم المستمر لضمان نجاحك.</p>
+                        <div class="step-duration">المدة: ١-٢ يوم</div>
+                        <a href="#" class="info-link" onclick="showStepDetails('5'); return false;">عرض التفاصيل</a>
+                        <button class="view-details-btn" onclick="openProcessModal('5')">اعرف المزيد</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service-Specific Processes -->
+    <section class="service-processes">
+        <div class="container">
+            <h2 class="section-title">مسارات العمل حسب الخدمة</h2>
+            
+            <!-- Videography Process -->
+            <div class="service-process-card" data-category="video-photo">
+                <div class="service-process-header">
+                    <h3>عملية التصوير</h3>
+                    <span class="category-badge">التصوير والفيديو</span>
+                </div>
+                <div class="service-process-content">
+                    <div class="process-grid">
+                        <div class="mini-step">
+                            <div class="mini-step-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="11" cy="11" r="8"/>
+                                    <path d="M21 21l-4.35-4.35"/>
+                                </svg>
+                            </div>
+                            <h4>ما قبل الإنتاج</h4>
+                            <p>تطوير السيناريو، اختيار المواقع، تجهيز المعدات</p>
+                        </div>
+                        <div class="mini-step">
+                            <div class="mini-step-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                                    <polyline points="14 2 14 8 20 8"/>
+                                    <line x1="16" y1="13" x2="8" y2="13"/>
+                                    <line x1="16" y1="17" x2="8" y2="17"/>
+                                    <polyline points="10 9 9 9 8 9"/>
+                                </svg>
+                            </div>
+                            <h4>الإنتاج</h4>
+                            <p>تصوير احترافي بزوايا متعددة مع لقطات احتياطية</p>
+                        </div>
+                        <div class="mini-step">
+                            <div class="mini-step-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M9 12l2 2 4-4"/>
+                                    <path d="M21 12c0 1.3-.62 2.44-1.59 3.18A3 3 0 1 1 16 9.82 9 9 0 1 0 9 21c1.3 0 2.44-.62 3.18-1.59"/>
+                                    <circle cx="12" cy="12" r="1"/>
+                                </svg>
+                            </div>
+                            <h4>ما بعد الإنتاج</h4>
+                            <p>المونتاج، تصحيح الألوان، مزج الصوت، والمؤثرات</p>
+                        </div>
+                        <div class="mini-step">
+                            <div class="mini-step-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="1" y="3" width="15" height="13"/>
+                                    <path d="M16 8l2 0 0 13-15 0 0-2"/>
+                                    <polyline points="6 7 6 1 20 1 20 15 14 15"/>
+                                </svg>
+                            </div>
+                            <h4>التسليم</h4>
+                            <p>صيغ متعددة، لقطات خام، وملفات المشروع</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Design Process -->
+            <div class="service-process-card" data-category="design">
+                <div class="service-process-header">
+                    <h3>عملية التصميم والهوية</h3>
+                    <span class="category-badge">التصميم</span>
+                </div>
+                <div class="service-process-content">
+                    <div class="process-grid">
+                        <div class="mini-step">
+                            <div class="mini-step-icon">🔍</div>
+                            <h4>البحث</h4>
+                            <p>تحليل السوق، دراسة المنافسين، تحديد الاتجاهات</p>
+                        </div>
+                        <div class="mini-step">
+                            <div class="mini-step-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polygon points="23 7 16 12 23 17 23 7"/>
+                                    <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+                                </svg>
+                            </div>
+                            <h4>المفاهيم الأولية</h4>
+                            <p>العصف الذهني، الرسومات الأولية، الأفكار المبدئية</p>
+                        </div>
+                        <div class="mini-step">
+                            <div class="mini-step-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+                                    <path d="M15 5l4 4"/>
+                                </svg>
+                            </div>
+                            <h4>تطوير التصميم</h4>
+                            <p>إنشاء خيارات وتنويعات تصميمية متعددة</p>
+                        </div>
+                        <div class="mini-step">
+                            <div class="mini-step-icon">✅</div>
+                            <h4>الصيغة النهائية</h4>
+                            <p>التنقيح، تجهيز الملفات، دليل الهوية</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Digital Marketing Process -->
+            <div class="service-process-card" data-category="digital">
+                <div class="service-process-header">
+                    <h3>عملية التسويق الرقمي</h3>
+                    <span class="category-badge">التسويق الرقمي</span>
+                </div>
+                <div class="service-process-content">
+                    <div class="process-grid">
+                        <div class="mini-step">
+                            <div class="mini-step-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M18 20V10"/>
+                                    <path d="M12 20V4"/>
+                                    <path d="M6 20v-6"/>
+                                </svg>
+                            </div>
+                            <h4>التحليل</h4>
+                            <p>تقييم الأداء الحالي وتحديد الفرص</p>
+                        </div>
+                        <div class="mini-step">
+                            <div class="mini-step-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <circle cx="12" cy="12" r="6"/>
+                                    <circle cx="12" cy="12" r="2"/>
+                                </svg>
+                            </div>
+                            <h4>الاستراتيجية</h4>
+                            <p>تخطيط الحملات، جدول المحتوى، تحديد المؤشرات</p>
+                        </div>
+                        <div class="mini-step">
+                            <div class="mini-step-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2"/>
+                                    <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 9a22.35 22.35 0 0 1-4 2z"/>
+                                    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+                                    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+                                </svg>
+                            </div>
+                            <h4>التنفيذ</h4>
+                            <p>إنشاء المحتوى، النشر، إدارة الإعلانات</p>
+                        </div>
+                        <div class="mini-step">
+                            <div class="mini-step-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                                </svg>
+                            </div>
+                            <h4>التحسين</h4>
+                            <p>متابعة الأداء، اختبارات A/B، التحسينات</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Web Development Process -->
+            <div class="service-process-card" data-category="web">
+                <div class="service-process-header">
+                    <h3>عملية تطوير المواقع</h3>
+                    <span class="category-badge">تطوير المواقع</span>
+                </div>
+                <div class="service-process-content">
+                    <div class="process-grid">
+                        <div class="mini-step">
+                            <div class="mini-step-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <polyline points="16 18 22 12 16 6"/>
+                                    <polyline points="8 6 2 12 8 18"/>
+                                </svg>
+                            </div>
+                            <h4>الهيكلة</h4>
+                            <p>خريطة الموقع، النماذج الأولية، التخطيط التقني</p>
+                        </div>
+                        <div class="mini-step">
+                            <div class="mini-step-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M17 3a2.85 2.83 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"/>
+                                    <path d="M15 5l4 4"/>
+                                </svg>
+                            </div>
+                            <h4>التصميم</h4>
+                            <p>تصميم واجهة المستخدم، التصاميم المتجاوبة، النماذج</p>
+                        </div>
+                        <div class="mini-step">
+                            <div class="mini-step-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <rect x="2" y="6" width="20" height="8" rx="1"/>
+                                    <path d="M17 14v7"/>
+                                    <path d="M7 14v7"/>
+                                    <path d="M17 3v3"/>
+                                    <path d="M7 3v3"/>
+                                    <path d="M10 14l1.5 2 4-4"/>
+                                </svg>
+                            </div>
+                            <h4>التطوير</h4>
+                            <p>البرمجة، دمج نظام إدارة المحتوى، تنفيذ الوظائف</p>
+                        </div>
+                        <div class="mini-step">
+                            <div class="mini-step-icon">
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2"/>
+                                    <path d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 9a22.35 22.35 0 0 1-4 2z"/>
+                                    <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+                                    <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+                                </svg>
+                            </div>
+                            <h4>الإطلاق</h4>
+                            <p>الاختبار، النشر، إعداد SEO، التدريب</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Our Process Works -->
+    <section class="process-benefits">
+        <div class="container">
+            <h2 class="section-title">لماذا تنجح عمليتنا</h2>
+            
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>نهج تعاوني</h3>
+                    <p>نعمل معك عن قرب في كل مرحلة لضمان تحقيق رؤيتك</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <circle cx="12" cy="12" r="6"/>
+                            <circle cx="12" cy="12" r="2"/>
+                        </svg>
+                    </div>
+                    <h3>موجهة بالأهداف</h3>
+                    <p>كل قرار يتخذ مع وضع أهداف عملك في الاعتبار</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
+                        </svg>
+                    </div>
+                    <h3>تنفيذ فعال</h3>
+                    <p>عمليات مبسطة تضمن التسليم في الوقت المحدد دون المساس بالجودة</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3>ضمان الجودة</h3>
+                    <p>نقاط تحقق متعددة تضمن نتائج استثنائية</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                        </svg>
+                    </div>
+                    <h3>تواصل شفاف</h3>
+                    <p>تحديثات منتظمة تبقيك على اطلاع طوال المشروع</p>
+                </div>
+                
+                <div class="benefit-card">
+                    <div class="benefit-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <polyline points="23 4 23 10 17 10"/>
+                            <polyline points="1 20 1 14 7 14"/>
+                            <path d="M20.49 9A9 9 0 0 0 5.64 5.64L1 10m22 4l-4.64 4.36A9 9 0 0 1 3.51 15"/>
+                        </svg>
+                    </div>
+                    <h3>مرونة وتكيف</h3>
+                    <p>نعدل نهجنا بناءً على ملاحظاتك واحتياجاتك</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="process-cta">
+        <div class="container">
+            <div class="cta-content">
+                <h2>جاهز لبدء مشروعك؟</h2>
+                <p>دعنا نعمل معًا لتحويل رؤيتك إلى واقع</p>
+                <div class="cta-buttons">
+                    <a href="services-ar.html" class="cta-btn primary">تصفح خدماتنا</a>
+                    <a href="contact-ar.html" class="cta-btn secondary">تواصل معنا</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/xplorers logo.svg" alt="Xplorers Creative Logo" class="footer-logo-img">
+                </div>
+                <div class="footer-links">
+                    <a href="index-ar.html">الرئيسية</a>
+                    <a href="our-work.html">أعمالنا</a>
+                    <a href="services-ar.html">خدماتنا</a>
+                    <a href="process.html">عمليتنا</a>
+                    <a href="contact-ar.html">اتصل بنا</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://x.com/XplorersMedia" class="social-link" aria-label="X (Twitter)" target="_blank" rel="noopener noreferrer">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/xplorerscreative/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.405a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/xplorers-media-322aab395/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <!-- Process Modal -->
+    <div class="process-modal" id="processModal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeProcessModal()">&times;</span>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/process-ar.js"></script>
+    <script src="js/language-switcher.js"></script>
+</body>
+</html>

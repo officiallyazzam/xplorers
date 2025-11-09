@@ -1,0 +1,90 @@
+/* Arabic Custom Quote Styles */
+body {
+    font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* Form Elements Direction */
+.form-input,
+.form-select,
+.form-textarea {
+    text-align: right;
+}
+
+/* Checkbox Alignments */
+.checkbox-label {
+    flex-direction: row-reverse;
+}
+
+.checkbox-icon {
+    margin-left: 0;
+    margin-right: 0.75rem;
+}
+
+/* Form Submit Button */
+.form-submit {
+    flex-direction: row-reverse;
+}
+
+.form-submit svg {
+    transform: rotate(180deg);
+}
+
+/* File Upload */
+.file-upload-text {
+    flex-direction: row-reverse;
+}
+
+/* Help Box Link */
+.help-link {
+    flex-direction: row-reverse;
+}
+
+.help-link svg {
+    transform: rotate(180deg);
+}
+
+/* Required Field Asterisk */
+.required {
+    margin-right: 0.25rem;
+    margin-left: 0;
+}
+
+/* File List Items */
+.file-item {
+    flex-direction: row-reverse;
+}
+
+/* Improve Arabic Text Rendering */
+h1, h2, h3, h4, h5, h6,
+.form-label,
+.section-title,
+.section-description,
+.checkbox-label,
+.help-box h3,
+.help-box p,
+.privacy-notice p,
+.form-submit span {
+    letter-spacing: 0;
+}
+
+/* Adjust Font Sizes for Better Arabic Reading */
+.section-title {
+    font-size: 1.75rem;
+}
+
+.form-label {
+    font-size: 1rem;
+}
+
+.checkbox-label {
+    font-size: 1rem;
+}
+
+/* Success Modal */
+.success-modal-content {
+    text-align: center;
+}
+
+.success-close-btn {
+    font-family: 'Tajawal', sans-serif;
+}

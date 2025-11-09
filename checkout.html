@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout - Xplorers Creative</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Override styles.css to match home page */
+.main-header {
+    background: linear-gradient(135deg, rgba(35, 35, 27, 0.9) 0%, rgba(59, 83, 74, 0.9) 100%) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(141, 163, 199, 0.2);
+    box-shadow: 0 2px 20px rgba(35, 35, 27, 0.3);
+}
+
+.nav-link {
+    color: var(--secondary-light) !important;
+}
+
+.nav-link:hover {
+    color: var(--primary-light) !important;
+}
+
+.logo-img {
+    filter: brightness(0) invert(1);
+    opacity: 0.9;
+}
+    body {
+        background: var(--white);
+    }
+
+    .page-hero {
+        background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--primary-dark) 50%, var(--secondary-medium) 100%);
+        padding: 5rem 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+        margin-bottom: 4rem;
+    }
+
+    .page-hero::before {
+        content: '';
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(141, 163, 199, 0.1) 0%, transparent 70%);
+        animation: rotate 30s linear infinite;
+    }
+
+    @keyframes rotate {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 1;
+    }
+
+    .hero-title {
+        font-size: 3.5rem;
+        font-weight: 700;
+        color: var(--secondary-light);
+        margin-bottom: 1rem;
+        text-shadow: 2px 4px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .hero-subtitle {
+        font-size: 1.3rem;
+        color: var(--secondary-light);
+        opacity: 0.95;
+    }
+
+    .checkout-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 4rem 2rem;
+        display: grid;
+        grid-template-columns: 1fr 400px;
+        gap: 3rem;
+    }
+
+    .checkout-form-section.service-card {
+        background: linear-gradient(180deg, var(--secondary-dark) 0%, var(--primary-dark) 100%);
+        border: 2px solid rgba(255, 255, 255, 0.1);
+        padding: 2rem;
+        backdrop-filter: blur(8px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        min-height: unset;
+        border-radius: 20px;
+        overflow: hidden;
+    }
+
+    .checkout-form-section.service-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .checkout-form-section .service-title {
+        color: var(--secondary-light) !important;
+        font-size: 1.75rem;
+    }
+
+    .form-group {
+        margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+        display: block;
+        margin-bottom: 0.5rem;
+        color: var(--secondary-light);
+        font-weight: 600;
+        opacity: 1;
+        font-size: 1.1rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+        width: 100%;
+        padding: 0.75rem;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        font-size: 1.05rem;
+        transition: all 0.3s ease;
+        font-family: inherit;
+        background: rgba(255, 255, 255, 0.1);
+        color: var(--secondary-light);
+        font-weight: 500;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+        color: rgba(255, 254, 224, 0.7);
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+        outline: none;
+        border-color: var(--primary-light);
+        background: rgba(255, 255, 255, 0.15);
+    }
+
+    .form-group textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
+    }
+
+    /* Style for select dropdowns */
+    .form-group select {
+        appearance: none;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23FFFEE0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 0.75rem center;
+        background-size: 1rem;
+        padding-right: 2.5rem;
+    }
+
+    .form-group select option {
+        background: var(--secondary-dark);
+        color: var(--secondary-light);
+        font-size: 1.05rem;
+        padding: 8px;
+    }
+
+    .order-summary {
+        background: linear-gradient(135deg, var(--secondary-dark) 0%, var(--primary-dark) 100%);
+        padding: 2rem;
+        border-radius: 20px;
+        color: var(--white);
+        height: fit-content;
+        position: sticky;
+        top: 6rem;
+        box-shadow: 0 10px 40px rgba(35, 35, 27, 0.2);
+        max-height: calc(100vh - 8rem);
+        overflow-y: auto;
+        align-self: flex-start;
+    }
+
+    .order-summary h3 {
+        margin-bottom: 1.5rem;
+        color: var(--white);
+        font-size: 1.5rem;
+    }
+
+    .order-item {
+        background: rgba(255, 255, 255, 0.1);
+        padding: 1rem;
+        border-radius: 12px;
+        margin-bottom: 0.75rem;
+        backdrop-filter: blur(10px);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: relative;
+    }
+
+    .order-item-content {
+        flex: 1;
+    }
+
+    .order-item-name {
+        font-weight: 600;
+        margin-bottom: 0.25rem;
+        color: var(--white);
+    }
+
+    .order-item-details {
+        color: rgba(255, 254, 224, 0.8);
+        font-size: 0.9rem;
+        margin-top: 0.25rem;
+        line-height: 1.4;
+    }
+
+    .remove-item-btn {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: var(--secondary-light);
+        border-radius: 8px;
+        width: 32px;
+        height: 32px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-size: 16px;
+        font-weight: bold;
+        margin-left: 1rem;
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .remove-item-btn:hover {
+        background: rgba(255, 255, 255, 0.2);
+        border-color: rgba(255, 255, 255, 0.3);
+        transform: translateY(-2px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .remove-item-btn:active {
+        transform: translateY(0);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+    }
+
+    .order-total {
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 2px solid rgba(255, 255, 255, 0.3);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: var(--white);
+    }
+
+    .submit-order-btn {
+        width: 100%;
+        padding: 1.25rem 2rem;
+        background: linear-gradient(135deg, var(--primary-dark), var(--secondary-medium));
+        color: var(--secondary-light);
+        border: none;
+        border-radius: 30px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        margin-top: 1.5rem;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        position: relative;
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .submit-order-btn::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, var(--secondary-medium), var(--primary-light));
+        transition: left 0.3s ease;
+        z-index: 0;
+    }
+
+    .submit-order-btn:hover:not(:disabled)::before {
+        left: 0;
+    }
+
+    .submit-order-btn:hover:not(:disabled) {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 30px rgba(59, 83, 74, 0.4);
+    }
+
+    .submit-order-btn span {
+        position: relative;
+        z-index: 1;
+    }
+
+    .submit-order-btn:disabled {
+        background: var(--gray-medium);
+        cursor: not-allowed;
+        transform: none;
+        opacity: 0.6;
+    }
+
+    .submit-order-btn:disabled::before {
+        display: none;
+    }
+
+    .error-message {
+        color: #e74c3c;
+        font-size: 0.875rem;
+        margin-top: 0.25rem;
+        display: block;
+    }
+
+    .form-group input.error,
+    .form-group textarea.error,
+    .form-group select.error {
+        border-color: #e74c3c;
+    }
+
+    .success-message {
+        background: linear-gradient(135deg, #00442B 0%, #3B534A 100%);
+        color: var(--white);
+        padding: 4rem 2rem;
+        border-radius: 20px;
+        text-align: center;
+        display: none;
+        max-width: 800px;
+        margin: 2rem auto;
+        box-shadow: 0 10px 40px rgba(35, 35, 27, 0.2);
+    }
+
+    .success-message h2 {
+        color: var(--white);
+        margin-bottom: 1rem;
+        font-size: 2.5rem;
+    }
+
+    .success-message p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+    }
+
+    .back-home-btn {
+        display: inline-block;
+        padding: 1rem 2rem;
+        background: var(--secondary-light);
+        color: var(--primary-dark);
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: 700;
+        transition: all 0.3s ease;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+
+    .back-home-btn:hover {
+        transform: translateY(-2px);
+        background: var(--primary-light);
+        box-shadow: 0 8px 20px rgba(255, 254, 224, 0.4);
+    }
+
+    @media (max-width: 968px) {
+        .checkout-container {
+            grid-template-columns: 1fr;
+        }
+
+        .order-summary {
+            position: static;
+            order: -1;
+        }
+
+        .form-row {
+            grid-template-columns: 1fr;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+        }
+    }
+</style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="images/xplorers logo.svg" alt="Xplorers Creative Logo" class="logo-img home-logo" style="height: 45px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;">
+                </a>
+                
+                <div class="nav-menu">
+                    <a href="our-work.html" class="nav-link" data-en="Our Work" data-ar="أعمالنا">Our Work</a>
+                    <a href="services.html" class="nav-link" data-en="Services" data-ar="الخدمات">Services</a>
+                    <a href="process.html" class="nav-link" data-en="Our Process" data-ar="عمليتنا">Our Process</a>
+                    <a href="contact.html" class="nav-link" data-en="Contact" data-ar="اتصل بنا">Contact</a>
+                </div>
+                
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ar">عربي</button>
+                </div>
+                
+            </div>
+        </nav>
+    </header>
+
+    <!-- Page Hero -->
+    <section class="page-hero">
+        <div class="hero-content">
+            <h1 class="hero-title" data-en="Booking" data-ar="إتمام الطلب">Booking</h1>
+            <p class="hero-subtitle" data-en="Complete your order details" data-ar="أكمل تفاصيل طلبك">Complete your order details</p>
+        </div>
+    </section>
+
+    <!-- Checkout Content -->
+    <div class="checkout-container" id="checkoutContainer">
+        <!-- Checkout Form -->
+        <div class="service-card checkout-form-section">
+            <div class="service-header">
+                <h3 class="service-title" data-en="Contact Information" data-ar="معلومات الاتصال">Contact Information</h3>
+            </div>
+            <div class="service-details">
+                <form id="checkoutForm">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName" data-en="Full Name *" data-ar="الاسم الكامل *">Full Name *</label>
+                            <input type="text" id="fullName" name="fullName" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="companyName" data-en="Company Name" data-ar="اسم الشركة">Company Name</label>
+                            <input type="text" id="companyName" name="companyName">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email" data-en="Email Address *" data-ar="البريد الإلكتروني *">Email Address *</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone" data-en="Phone Number *" data-ar="رقم الهاتف *">Phone Number *</label>
+                            <input type="tel" id="phone" name="phone" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="projectDetails" data-en="Project Details" data-ar="تفاصيل المشروع">Project Details</label>
+                        <textarea id="projectDetails" name="projectDetails" placeholder="Tell us more about your project..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="timeline" data-en="Preferred Timeline" data-ar="الإطار الزمني المفضل">Preferred Timeline</label>
+                        <select id="timeline" name="timeline">
+                            <option value="">Select timeline</option>
+                            <option value="urgent">Urgent (1-2 weeks)</option>
+                            <option value="standard">Standard (3-4 weeks)</option>
+                            <option value="flexible">Flexible (1-2 months)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="specialRequests" data-en="Special Requests" data-ar="طلبات خاصة">Special Requests</label>
+                        <textarea id="specialRequests" name="specialRequests" placeholder="Any special requirements or preferences..."></textarea>
+                    </div>
+
+                    <div class="service-bottom">
+                        <button type="submit" class="add-service-btn submit-order" id="submitBtn">
+                            <span data-en="Submit Order" data-ar="إرسال الطلب">Submit Order</span>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <style>
+        .add-service-btn.submit-order {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.1);
+            color: var(--secondary-light);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .add-service-btn.submit-order span {
+            text-align: center;
+            width: 100%;
+        }
+
+        .add-service-btn.submit-order:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: var(--secondary-light);
+            transform: translateY(-2px);
+        }
+
+        .service-bottom {
+            margin-top: 2rem;
+            padding-top: 1rem;
+            border-top: 2px solid rgba(255, 255, 255, 0.1);
+        }
+        </style>
+
+        <!-- Order Summary -->
+        <div class="order-summary">
+            <h3 data-en="Order Summary" data-ar="ملخص الطلب">Order Summary</h3>
+            <div id="orderItems"></div>
+            <div class="order-total" style="display: none;">
+                <span data-en="Total:" data-ar="المجموع:">Total:</span>
+                <span id="orderTotal">SAR 0</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="success-message" id="successMessage">
+        <h2 data-en="Order Submitted Successfully!" data-ar="تم إرسال الطلب بنجاح!">Order Submitted Successfully!</h2>
+        <p data-en="Thank you for your order! We will contact you shortly to discuss the details." data-ar="شكراً لطلبك! سنتواصل معك قريباً لمناقشة التفاصيل.">
+            Thank you for your order! We will contact you shortly to discuss the details.
+        </p>
+        <a href="index.html" class="back-home-btn" data-en="Back to Home" data-ar="العودة للرئيسية">Back to Home</a>
+    </div>
+
+    <!-- Footer -->
+<footer class="main-footer">
+    <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                <img src="images/xplorers logo.svg" alt="Xplorers Creative Logo" class="footer-logo-img">
+            </div>
+            <div class="footer-links">
+                <a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a>
+                <a href="our-work.html" data-en="Our Work" data-ar="أعمالنا">Our Work</a>
+                <a href="services.html" data-en="Services" data-ar="الخدمات">Services</a>
+                <a href="process.html" data-en="Process" data-ar="العملية">Process</a>
+                <a href="contact.html" data-en="Contact" data-ar="اتصل">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://x.com/XplorersMedia" class="social-link" aria-label="X (Twitter)" target="_blank" rel="noopener noreferrer">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/xplorerscreative/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.405a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/xplorers-media-322aab395/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+            </div>
+
+        </div>
+    </div>
+</footer>
+
+    <script src="js/main.js"></script>
+    <script src="js/checkout.js"></script>
+    <script src="js/language-switcher.js"></script>
+</body>
+</html>

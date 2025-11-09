@@ -1,0 +1,972 @@
+// Handpicked Services JavaScript
+
+// Booking panel data
+let bookingItems = [];
+let selectedServices = new Set();
+let currentServiceModal = null;
+
+// Service prices and options
+const serviceOptions = {
+    'videography': {
+        title: 'Professional Videography',
+        requiresTier: true,
+        hasEquipmentImages: true,
+        options: [
+            {
+                id: 'event-videography',
+                name: 'Event Videography',
+                basePrice: 3500,
+                description: 'Complete event coverage with multiple angles and professional equipment'
+            },
+            {
+                id: 'realestate-videography',
+                name: 'Real Estate Videography',
+                basePrice: 2500,
+                description: 'Property walkthroughs with aerial shots and professional editing'
+            },
+            {
+                id: 'product-videography',
+                name: 'Product Videography',
+                basePrice: 2000,
+                description: 'High-quality product showcase videos for marketing'
+            },
+            {
+                id: 'cameraman-only',
+                name: 'Cameraman Service Only',
+                basePrice: 1500,
+                description: 'Professional cameraman without editing services'
+            },
+            {
+                id: 'commercial-videography',
+                name: 'Commercial Videography',
+                basePrice: 5000,
+                description: 'Full commercial production with script consultation'
+            }
+        ],
+        tiers: [
+            { 
+                id: 'phone', 
+                name: 'Phone', 
+                multiplier: 0.4, 
+                description: 'Smartphone filming',
+                image: 'images/equipment/iphone.png',
+                deviceName: 'iPhone 13 Pro Max'
+            },
+            { 
+                id: 'osmo', 
+                name: 'Osmo Pocket', 
+                multiplier: 0.6, 
+                description: 'Compact professional',
+                image: 'images/equipment/dji osmo pocket.png',
+                deviceName: 'Osmo Pocket 3'
+            },
+            { 
+                id: 'professional', 
+                name: 'Professional Camera', 
+                multiplier: 1.0, 
+                description: 'Industry standard',
+                image: 'images/equipment/profesional camera.png',
+                deviceName: 'Canon EOS R'
+            },
+            { 
+                id: 'cinema', 
+                name: 'Cinema Camera', 
+                multiplier: 1.5, 
+                description: 'Hollywood quality',
+                image: 'images/equipment/cinema camera.png',
+                deviceName: 'Sony FX3'
+            }
+        ]
+    },
+    'photography': {
+    title: 'Professional Photography',
+    requiresTier: true,
+    hasEquipmentImages: true,
+    options: [
+        {
+            id: 'event-photography',
+            name: 'Event Photography',
+            basePrice: 2500,
+            description: 'Full event coverage with edited photos delivered'
+        },
+        {
+            id: 'product-photography',
+            name: 'Product Photography',
+            basePrice: 1500,
+            description: 'Studio product shots with professional lighting'
+        },
+        {
+            id: 'realestate-photography',
+            name: 'Real Estate Photography',
+            basePrice: 2000,
+            description: 'HDR property photos with virtual staging options'
+        },
+        {
+            id: 'portrait-photography',
+            name: 'Portrait Photography',
+            basePrice: 1800,
+            description: 'Professional portraits and headshots'
+        },
+        {
+            id: 'food-photography',
+            name: 'Food Photography',
+            basePrice: 1700,
+            description: 'Appetizing food photography for menus and marketing'
+        }
+    ],
+    tiers: [
+        { 
+            id: 'professional', 
+            name: 'Professional Camera', 
+            multiplier: 1.0, 
+            description: 'High-end equipment',
+            image: 'images/equipment/profesional camera.png',
+            deviceName: 'Professional Camera'
+        },
+        { 
+            id: 'medium-format', 
+            name: 'Medium Format Camera', 
+            multiplier: 1.5, 
+            description: 'Ultimate quality',
+            image: 'images/equipment/medium format camera.png',
+            deviceName: 'Medium Format Camera'
+        }
+    ]
+},
+    'video-editing': {
+        title: 'Video Editing',
+        hasCustomOptions: true,
+        basePrice: 800,
+        editOptions: {
+            numberOfEdits: [1, 2, 3, 4, 5],
+            platforms: [
+                { id: 'youtube', name: 'YouTube', price: 0 },
+                { id: 'instagram', name: 'Instagram', price: 200 },
+                { id: 'tiktok', name: 'TikTok', price: 200 },
+                { id: 'all', name: 'All Platforms', price: 500 }
+            ]
+        },
+        addons: [
+            { id: 'color-grading', name: 'Color Grading & Correction', price: 800 },
+            { id: 'motion-graphics-light', name: 'Light Motion Graphics', price: 500 },
+            { id: 'motion-graphics-full', name: 'Full Motion Graphics', price: 1500 },
+            { id: 'rush-delivery', name: 'Rush Delivery', price: 1000 },
+            { id: 'captions', name: 'Add Captions', price: 30 }
+        ]
+    },
+    'motion-graphics': {
+        title: 'Motion Graphics',
+        options: [
+            {
+                id: 'light-motion',
+                name: 'Light Motion Graphics',
+                price: 500,
+                description: 'Basic animated text and simple transitions'
+            },
+            {
+                id: 'full-motion',
+                name: 'Full Motion Graphics',
+                price: 1500,
+                description: 'Complex animations, 3D elements, and visual effects'
+            }
+        ]
+    },
+    'social-media': {
+        title: 'Social Media Management',
+        options: [
+            {
+                id: 'basic-social',
+                name: 'Basic Package (3 platforms)',
+                price: 3000,
+                description: '30 posts per month across 3 platforms'
+            },
+            {
+                id: 'premium-social',
+                name: 'Premium Package (5 platforms)',
+                price: 4500,
+                description: '50 posts per month across 5 platforms with analytics'
+            },
+            {
+                id: 'enterprise-social',
+                name: 'Enterprise Package',
+                price: 7000,
+                description: 'Unlimited posts, all platforms, dedicated manager'
+            }
+        ]
+    },
+    'website-design': {
+        title: 'Website Design & Development',
+        options: [
+            {
+                id: 'basic-website',
+                name: 'Basic Website (5 pages)',
+                price: 8000,
+                description: 'Simple 5-page website with responsive design'
+            },
+            {
+                id: 'ecommerce-website',
+                name: 'E-commerce Website',
+                price: 15000,
+                description: 'Full online store with payment integration'
+            },
+            {
+                id: 'custom-website',
+                name: 'Custom Web Application',
+                price: 25000,
+                description: 'Custom functionality and database integration'
+            }
+        ]
+    }
+};
+
+// Benefits content for each service
+const serviceBenefits = {
+    'videography': 'Professional videography captures moments with cinematic quality, ensuring your brand or event is presented in the best possible light. High-quality equipment and expertise result in footage that engages viewers and delivers your message effectively.',
+    'photography': 'Professional photography creates lasting impressions with high-resolution images that showcase your products, services, or events. Quality photos increase engagement and build trust with your audience.',
+    'video-editing': 'Professional editing transforms raw footage into compelling stories. Proper pacing, transitions, and effects keep viewers engaged and deliver your message clearly.',
+    'color-grading': 'Color grading sets the mood and ensures visual consistency. It can make footage look cinematic, vibrant, or match your brand colors perfectly.',
+    'motion-graphics': 'Motion graphics add visual interest and help explain complex concepts. They increase viewer retention and make your content more shareable.',
+    'captions': 'Captions make your content accessible to a wider audience, improve SEO, and allow viewing without sound - crucial for social media.',
+    'rush-delivery': 'Rush delivery ensures you meet tight deadlines without compromising quality. Perfect for time-sensitive campaigns or last-minute needs.',
+    'logo-design': 'A professional logo is the foundation of your brand identity. It creates recognition and sets you apart from competitors.',
+    'brand-guidelines': 'Brand guidelines ensure consistency across all touchpoints, building trust and recognition with your audience.',
+    'business-cards': 'Professional business cards make memorable first impressions and provide a tangible connection to your brand.',
+    'social-media': 'Consistent social media management builds community, increases brand awareness, and drives engagement with your target audience.',
+    'google-ads': 'Google Ads put your business in front of customers actively searching for your services, providing measurable ROI.',
+    'website-design': 'A professional website is your 24/7 salesperson, building credibility and converting visitors into customers.',
+    'seo-setup': 'SEO optimization ensures your website ranks higher in search results, bringing organic traffic and reducing marketing costs.'
+};
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+    initializeCategoryTabs();
+    
+    // Add event listener for booking toggle
+    const bookingToggle = document.getElementById('bookingToggle');
+    if (bookingToggle) {
+        bookingToggle.addEventListener('click', toggleBooking);
+    }
+    
+    loadBookingFromStorage();
+    updateBookingDisplay();
+});
+
+// Add ESC key listener to close modals
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' || e.key === 'Esc') {
+        // Close service modal if open
+        const serviceModal = document.getElementById('serviceModal');
+        if (serviceModal && serviceModal.style.display === 'flex') {
+            closeServiceModal();
+        }
+        
+        // Close info modal if open
+        const infoModal = document.getElementById('serviceInfoModal');
+        if (infoModal && infoModal.style.display === 'flex') {
+            closeModal();
+        }
+    }
+});
+
+// Initialize category tabs
+function initializeCategoryTabs() {
+    const tabs = document.querySelectorAll('.category-tab');
+    
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            
+            const category = tab.getAttribute('data-category');
+            filterServices(category);
+        });
+    });
+}
+
+// Filter services by category
+function filterServices(category) {
+    const cards = document.querySelectorAll('.service-card');
+    
+    cards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category');
+        
+        if (category === 'all' || cardCategory === category) {
+            card.style.display = 'block';
+            setTimeout(() => {
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 100);
+        } else {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            setTimeout(() => {
+                card.style.display = 'none';
+            }, 300);
+        }
+    });
+}
+
+// Open service modal
+window.openServiceModal = function(serviceId) {
+    currentServiceModal = serviceId;
+    const modal = document.getElementById('serviceModal');
+    const title = document.getElementById('modalServiceTitle');
+    const optionsContainer = document.getElementById('modalServiceOptions');
+    
+    const service = serviceOptions[serviceId];
+    if (!service) return;
+    
+    title.textContent = service.title;
+    
+    // Handle video editing special case
+    if (service.hasCustomOptions && serviceId === 'video-editing') {
+        showVideoEditingOptions(optionsContainer);
+    } 
+    // Handle videography with equipment images
+    else if (service.requiresTier && service.hasEquipmentImages) {
+        showVideographyOptions(optionsContainer, service);
+    }
+    // Handle other services with tiers
+    else if (service.requiresTier) {
+        showServiceWithTiers(optionsContainer, service);
+    }
+    // Handle simple option selection
+    else if (service.options) {
+        showSimpleOptions(optionsContainer, service);
+    }
+    
+    modal.style.display = 'flex';
+};
+
+// Show video editing options
+function showVideoEditingOptions(container) {
+    let html = `
+        <div class="editing-options-group">
+            <h4>Number of Edits:</h4>
+            <select class="editing-number-select" id="editCount">
+                <option value="1">1 Edit - SAR 800</option>
+                <option value="2">2 Edits - SAR 1,500</option>
+                <option value="3">3 Edits - SAR 2,100</option>
+                <option value="4">4 Edits - SAR 2,600</option>
+                <option value="5">5 Edits - SAR 3,000</option>
+            </select>
+        </div>
+        
+        <div class="editing-options-group">
+            <h4>Platform to Edit For:</h4>
+            <div class="platform-options">
+                <div class="platform-option" data-platform="youtube" data-price="0" onclick="selectPlatform('youtube')">
+                    YouTube
+                </div>
+                <div class="platform-option" data-platform="instagram" data-price="200" onclick="selectPlatform('instagram')">
+                    Instagram (+SAR 200)
+                </div>
+                <div class="platform-option" data-platform="tiktok" data-price="200" onclick="selectPlatform('tiktok')">
+                    TikTok (+SAR 200)
+                </div>
+                <div class="platform-option" data-platform="all" data-price="500" onclick="selectPlatform('all')">
+                    All Platforms (+SAR 500)
+                </div>
+            </div>
+        </div>
+        
+        <div class="editing-options-group">
+            <h4>Recommended Add-ons:</h4>
+            <div class="addon-options">
+                <label class="addon-option">
+                    <div class="addon-info">
+                        <input type="checkbox" data-addon="color-grading" data-price="800">
+                        <span>Color Grading & Correction</span>
+                        <a href="#" class="addon-benefit-link" onclick="showBenefit('color-grading'); return false;">Why?</a>
+                    </div>
+                    <span class="addon-price-label">+SAR 800</span>
+                </label>
+                <label class="addon-option">
+                    <div class="addon-info">
+                        <input type="checkbox" data-addon="motion-graphics-light" data-price="500">
+                        <span>Light Motion Graphics</span>
+                        <a href="#" class="addon-benefit-link" onclick="showBenefit('motion-graphics'); return false;">Why?</a>
+                    </div>
+                    <span class="addon-price-label">+SAR 500</span>
+                </label>
+                <label class="addon-option">
+                    <div class="addon-info">
+                        <input type="checkbox" data-addon="motion-graphics-full" data-price="1500">
+                        <span>Full Motion Graphics</span>
+                        <a href="#" class="addon-benefit-link" onclick="showBenefit('motion-graphics'); return false;">Why?</a>
+                    </div>
+                    <span class="addon-price-label">+SAR 1,500</span>
+                </label>
+                <label class="addon-option">
+                    <div class="addon-info">
+                        <input type="checkbox" data-addon="rush-delivery" data-price="1000">
+                        <span>Rush Delivery</span>
+                        <a href="#" class="addon-benefit-link" onclick="showBenefit('rush-delivery'); return false;">Why?</a>
+                    </div>
+                    <span class="addon-price-label">+SAR 1,000</span>
+                </label>
+                <label class="addon-option">
+                    <div class="addon-info">
+                        <input type="checkbox" data-addon="captions" data-price="30">
+                        <span>Add Captions</span>
+                        <a href="#" class="addon-benefit-link" onclick="showBenefit('captions'); return false;">Why?</a>
+                    </div>
+                    <span class="addon-price-label">+SAR 30</span>
+                </label>
+            </div>
+        </div>
+        
+        <button class="modal-add-btn" id="modalAddBtn" onclick="addVideoEditingToBooking()">
+            Add to Booking - SAR 800
+        </button>
+    `;
+    
+    container.innerHTML = html;
+    
+    // Add event listeners for price calculation
+    document.getElementById('editCount').addEventListener('change', calculateVideoEditingPrice);
+    document.querySelectorAll('.addon-option input').forEach(input => {
+        input.addEventListener('change', calculateVideoEditingPrice);
+    });
+}
+
+// Show videography options
+function showVideographyOptions(container, service) {
+    let html = `
+        <div class="service-option-group">
+            <h3>Step 1: Select Your Service Type</h3>
+    `;
+    
+    service.options.forEach(option => {
+        const lowestPrice = Math.floor(option.basePrice * service.tiers[0].multiplier);
+        html += `
+            <div class="service-option-item" data-option-id="${option.id}" data-base-price="${option.basePrice}" onclick="selectServiceOption('${option.id}')">
+                <div class="option-header">
+                    <span class="option-title">${option.name}</span>
+                    <span class="option-price">Starting from SAR ${lowestPrice.toLocaleString()}</span>
+                </div>
+                <div class="option-description">${option.description}</div>
+            </div>
+        `;
+    });
+    
+    html += `
+        </div>
+        <div id="tierSelection" style="display: none; margin-top: 2rem;">
+            <h3>Step 2: Select Equipment Level</h3>
+            <div id="tierOptions"></div>
+        </div>
+        <button class="modal-add-btn" id="modalAddBtn" onclick="addSelectedServiceToBooking()" disabled>
+            Select an Option First
+        </button>
+    `;
+    
+    container.innerHTML = html;
+    
+    // Create equipment display panel if it doesn't exist
+    if (!document.getElementById('equipmentDisplayPanel')) {
+        const equipmentPanel = document.createElement('div');
+        equipmentPanel.id = 'equipmentDisplayPanel';
+        equipmentPanel.className = 'equipment-display-panel';
+        equipmentPanel.innerHTML = `
+            <img class="equipment-image" id="equipmentImage" src="" alt="">
+        `;
+        document.body.appendChild(equipmentPanel);
+    }
+}
+
+window.selectServiceOption = function(optionId) {
+    const service = serviceOptions[currentServiceModal];
+    
+    document.querySelectorAll('.service-option-item').forEach(item => {
+        item.classList.remove('selected');
+    });
+    
+    const selectedItem = document.querySelector(`[data-option-id="${optionId}"]`);
+    selectedItem.classList.add('selected');
+    
+    window.selectedServiceOption = service.options.find(opt => opt.id === optionId);
+    
+    if (service.requiresTier) {
+        const tierSection = document.getElementById('tierSelection');
+        const tierOptions = document.getElementById('tierOptions');
+        
+        tierSection.style.display = 'block';
+        
+        // Smooth scroll to tier selection
+        setTimeout(() => {
+            tierSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+        
+        let tierHTML = '';
+        service.tiers.forEach(tier => {
+            const tierPrice = Math.floor(window.selectedServiceOption.basePrice * tier.multiplier);
+            tierHTML += `
+                <div class="service-option-item" data-tier-id="${tier.id}" data-tier-price="${tierPrice}" 
+                     onclick="selectTier('${tier.id}')" 
+                     ${tier.image ? `data-tier-image="${tier.image}" data-tier-name="${tier.name}"` : ''}>
+                    <div class="option-header">
+                        <span class="option-title">${tier.name}</span>
+                        <span class="option-price">SAR ${tierPrice.toLocaleString()}</span>
+                    </div>
+                    <div class="option-description">${tier.description}</div>
+                </div>
+            `;
+        });
+        
+        tierOptions.innerHTML = tierHTML;
+        
+        const addBtn = document.getElementById('modalAddBtn');
+        addBtn.disabled = true;
+        addBtn.textContent = 'Select Equipment Level';
+    }
+};
+
+window.selectTier = function(tierId) {
+    document.querySelectorAll('#tierOptions .service-option-item').forEach(item => {
+        item.classList.remove('selected');
+    });
+    
+    const selectedTier = document.querySelector(`[data-tier-id="${tierId}"]`);
+    selectedTier.classList.add('selected');
+    
+    const service = serviceOptions[currentServiceModal];
+    window.selectedTier = service.tiers.find(t => t.id === tierId);
+    
+    // Handle equipment display for videography
+    if (service.hasEquipmentImages && window.selectedTier.image) {
+        const serviceModal = document.getElementById('serviceModal');
+        const equipmentPanel = document.getElementById('equipmentDisplayPanel');
+        
+        if (equipmentPanel) {
+            // Update image
+            const equipmentImage = document.getElementById('equipmentImage');
+            
+            // Fade out, change, fade in
+            if (equipmentPanel.classList.contains('show')) {
+                equipmentImage.style.opacity = '0';
+                setTimeout(() => {
+                    equipmentImage.src = window.selectedTier.image;
+                    equipmentImage.style.opacity = '1';
+                }, 300);
+            } else {
+                // First time showing
+                equipmentImage.src = window.selectedTier.image;
+                
+                // Slide main modal left and show equipment panel
+                setTimeout(() => {
+                    serviceModal.classList.add('shift-left');
+                    equipmentPanel.classList.add('show');
+                }, 10);
+            }
+        }
+    }
+    
+    const addBtn = document.getElementById('modalAddBtn');
+    const finalPrice = Math.floor(window.selectedServiceOption.basePrice * window.selectedTier.multiplier);
+    addBtn.disabled = false;
+    addBtn.textContent = `Add to Booking - SAR ${finalPrice.toLocaleString()}`;
+    
+    // Smooth scroll to Add to Booking button with extra space
+    setTimeout(() => {
+        addBtn.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 100);
+};
+
+// Show benefit popup
+window.showBenefit = function(serviceId) {
+    const modal = document.getElementById('serviceInfoModal');
+    const modalContent = document.getElementById('modalContent');
+    
+    const benefit = serviceBenefits[serviceId] || 'This service helps improve your brand presence and customer engagement.';
+    
+    modalContent.innerHTML = `
+        <h2>Why ${serviceId.replace('-', ' ').replace(/\b\w/g, l => l.toUpperCase())}?</h2>
+        <p>${benefit}</p>
+        <p style="margin-top: 1rem; font-style: italic;">Visual comparison coming soon...</p>
+    `;
+    
+    modal.style.display = 'flex';
+};
+// Show benefit popup
+window.showBenefit = function(serviceId) {
+    const benefit = serviceBenefits[serviceId] || 'This service helps improve your brand presence and customer engagement.';
+    
+    // Create benefits panel if it doesn't exist
+    let benefitsPanel = document.getElementById('benefitsDisplayPanel');
+    if (!benefitsPanel) {
+        benefitsPanel = document.createElement('div');
+        benefitsPanel.id = 'benefitsDisplayPanel';
+        benefitsPanel.className = 'benefits-display-panel';
+        document.body.appendChild(benefitsPanel);
+    }
+    
+    // Update content
+    benefitsPanel.innerHTML = `
+        <h3>Why ${serviceId.replace(/-/g, ' ').replace(/\b\w/g, l => l.toUpperCase())}?</h3>
+        <p>${benefit}</p>
+    `;
+    
+    // Show the panel next to the modal
+    const serviceModal = document.getElementById('serviceModal');
+    if (serviceModal && serviceModal.style.display === 'flex') {
+        setTimeout(() => {
+            serviceModal.classList.add('shift-left');
+            benefitsPanel.classList.add('show');
+        }, 10);
+    }
+};
+
+window.closeServiceModal = function() {
+    const modal = document.getElementById('serviceModal');
+    const equipmentPanel = document.getElementById('equipmentDisplayPanel');
+    const benefitsPanel = document.getElementById('benefitsDisplayPanel');
+    
+    // Reset main modal
+    modal.classList.remove('shift-left');
+    modal.style.display = 'none';
+    
+    // Hide and reset equipment panel
+    if (equipmentPanel) {
+        equipmentPanel.classList.remove('show');
+        // Remove the panel after animation
+        setTimeout(() => {
+            const equipmentImage = document.getElementById('equipmentImage');
+            if (equipmentImage) {
+                equipmentImage.src = '';
+            }
+        }, 400);
+    }
+    
+    // Hide and reset benefits panel
+    if (benefitsPanel) {
+        benefitsPanel.classList.remove('show');
+    }
+    
+    currentServiceModal = null;
+    window.selectedServiceOption = null;
+    window.selectedTier = null;
+};
+
+window.closeModal = function() {
+    const modal = document.getElementById('serviceInfoModal');
+    modal.style.display = 'none';
+};
+
+// Add remaining helper functions for booking and other functionality
+window.addToBookingDirect = function(serviceId, serviceName, price) {
+    addToBooking({
+        id: serviceId,
+        name: serviceName,
+        price: price
+    });
+};
+
+window.addSelectedServiceToBooking = function() {
+    if (!window.selectedServiceOption || !window.selectedTier) return;
+    
+    const finalPrice = Math.floor(window.selectedServiceOption.basePrice * window.selectedTier.multiplier);
+    const itemName = `${window.selectedServiceOption.name} (${window.selectedTier.name})`;
+    
+    addToBooking({
+        id: `${currentServiceModal}-${window.selectedServiceOption.id}-${window.selectedTier.id}`,
+        name: itemName,
+        price: finalPrice
+    });
+    
+    closeServiceModal();
+};
+
+function addToBooking(item) {
+    bookingItems.push(item);
+    saveBookingToStorage();
+    updateBookingDisplay();
+    showBookingAnimation();
+    
+    // Show booking panel with popup animation
+    const bookingPanel = document.getElementById('bookingPanel');
+    bookingPanel.classList.add('open');
+    bookingPanel.classList.add('popup-animation');
+    
+    // Remove animation class after it completes
+    setTimeout(() => {
+        bookingPanel.classList.remove('popup-animation');
+    }, 500);
+}
+
+function saveBookingToStorage() {
+    localStorage.setItem('nmo-booking', JSON.stringify(bookingItems));
+}
+
+function loadBookingFromStorage() {
+    const saved = localStorage.getItem('nmo-booking');
+    if (saved) {
+        bookingItems = JSON.parse(saved);
+    }
+}
+
+function updateBookingDisplay() {
+    const bookingCount = document.getElementById('bookingCount');
+    const bookingItemsContainer = document.getElementById('bookingItems');
+    const bookingTotal = document.getElementById('bookingTotal');
+    
+    bookingCount.textContent = bookingItems.length;
+    
+    if (bookingItems.length === 0) {
+        bookingItemsContainer.innerHTML = '<p style="text-align: center; color: var(--gray-medium);">No services selected</p>';
+        bookingTotal.textContent = 'SAR 0';
+        return;
+    }
+    
+    let total = 0;
+    bookingItemsContainer.innerHTML = '';
+    
+    bookingItems.forEach((item, index) => {
+        total += item.price;
+        const itemEl = document.createElement('div');
+        itemEl.className = 'booking-item';
+        
+        // Add animation class to new items
+        if (index === bookingItems.length - 1) {
+            itemEl.classList.add('item-added');
+        }
+        
+        // Check if this is a recurring service (social media management)
+        const isRecurring = item.name.toLowerCase().includes('social media');
+        
+        itemEl.innerHTML = `
+            <button class="booking-item-remove" onclick="removeFromBooking(${index})" aria-label="Remove item">×</button>
+            <span class="booking-item-name">${item.name}</span>
+            <div class="booking-item-price">
+                <span>SAR ${item.price.toLocaleString()}</span>
+                ${isRecurring ? `<span class="booking-item-period">/month</span>` : ''}
+            </div>
+        `;
+        bookingItemsContainer.appendChild(itemEl);
+    });
+    
+    bookingTotal.textContent = `SAR ${total.toLocaleString()}`;
+    
+    // Show better price section if 3+ items
+    const betterPriceSection = document.getElementById('betterPriceSection');
+    if (betterPriceSection) {
+        betterPriceSection.style.display = bookingItems.length >= 3 ? 'block' : 'none';
+    }
+}
+
+window.removeFromBooking = function(index) {
+    bookingItems.splice(index, 1);
+    saveBookingToStorage();
+    updateBookingDisplay();
+};
+
+window.toggleBooking = function() {
+    const bookingPanel = document.getElementById('bookingPanel');
+    bookingPanel.classList.toggle('open');
+};
+
+window.proceedToCheckout = function() {
+    if (bookingItems.length === 0) {
+        alert('Please add services to your booking first');
+        return;
+    }
+    
+    // Save booking and redirect to checkout
+    localStorage.setItem('nmo-checkout-booking', JSON.stringify(bookingItems));
+    window.location.href = 'checkout.html';
+};
+
+function showBookingAnimation() {
+    const bookingToggle = document.querySelector('.booking-toggle');
+    bookingToggle.style.transform = 'scale(1.2)';
+    setTimeout(() => {
+        bookingToggle.style.transform = 'scale(1)';
+    }, 200);
+}
+
+// Platform selection for video editing
+let selectedPlatform = null;
+
+window.selectPlatform = function(platform) {
+    selectedPlatform = platform;
+    document.querySelectorAll('.platform-option').forEach(opt => {
+        opt.classList.remove('selected');
+    });
+    document.querySelector(`[data-platform="${platform}"]`).classList.add('selected');
+    calculateVideoEditingPrice();
+};
+
+function calculateVideoEditingPrice() {
+    const editCount = parseInt(document.getElementById('editCount').value);
+    const prices = [800, 1500, 2100, 2600, 3000];
+    let total = prices[editCount - 1];
+    
+    // Add platform price
+    if (selectedPlatform) {
+        const platformPrice = parseInt(document.querySelector(`[data-platform="${selectedPlatform}"]`).dataset.price);
+        total += platformPrice;
+    }
+    
+    // Add addon prices
+    document.querySelectorAll('.addon-option input:checked').forEach(checkbox => {
+        total += parseInt(checkbox.dataset.price);
+    });
+    
+    const addBtn = document.getElementById('modalAddBtn');
+    addBtn.textContent = `Add to Booking - SAR ${total.toLocaleString()}`;
+    addBtn.disabled = !selectedPlatform;
+}
+
+window.addVideoEditingToBooking = function() {
+    if (!selectedPlatform) return;
+    
+    const editCount = parseInt(document.getElementById('editCount').value);
+    const prices = [800, 1500, 2100, 2600, 3000];
+    let total = prices[editCount - 1];
+    
+    let itemName = `Video Editing (${editCount} edit${editCount > 1 ? 's' : ''})`;
+    
+    // Add platform
+    const platformName = document.querySelector(`[data-platform="${selectedPlatform}"]`).textContent.trim();
+    itemName += ` - ${platformName}`;
+    total += parseInt(document.querySelector(`[data-platform="${selectedPlatform}"]`).dataset.price);
+    
+    // Add addons
+    const addons = [];
+    document.querySelectorAll('.addon-option input:checked').forEach(checkbox => {
+        const addonName = checkbox.parentElement.querySelector('span').textContent;
+        addons.push(addonName);
+        total += parseInt(checkbox.dataset.price);
+    });
+    
+    if (addons.length > 0) {
+        itemName += ` + ${addons.join(', ')}`;
+    }
+    
+    addToBooking({
+        id: `video-editing-${Date.now()}`,
+        name: itemName,
+        price: total
+    });
+    
+    closeServiceModal();
+};
+
+// Show simple options (for services without tiers)
+function showSimpleOptions(container, service) {
+    let html = '<div class="service-option-group">';
+    
+    service.options.forEach(option => {
+        html += `
+            <div class="service-option-item" data-option-id="${option.id}" data-price="${option.price}" onclick="selectSimpleOption('${option.id}', ${option.price})">
+                <div class="option-header">
+                    <span class="option-title">${option.name}</span>
+                    <span class="option-price">SAR ${option.price.toLocaleString()}</span>
+                </div>
+                <div class="option-description">${option.description}</div>
+            </div>
+        `;
+    });
+    
+    html += '</div><button class="modal-add-btn" id="modalAddBtn" disabled>Select an Option</button>';
+    container.innerHTML = html;
+}
+
+window.selectSimpleOption = function(optionId, price) {
+    document.querySelectorAll('.service-option-item').forEach(item => {
+        item.classList.remove('selected');
+    });
+    
+    const selectedItem = document.querySelector(`[data-option-id="${optionId}"]`);
+    selectedItem.classList.add('selected');
+    
+    const service = serviceOptions[currentServiceModal];
+    window.selectedSimpleOption = service.options.find(opt => opt.id === optionId);
+    
+    const addBtn = document.getElementById('modalAddBtn');
+    addBtn.disabled = false;
+    addBtn.textContent = `Add to Booking - SAR ${price.toLocaleString()}`;
+    addBtn.onclick = function() {
+        addToBooking({
+            id: optionId,
+            name: window.selectedSimpleOption.name,
+            price: window.selectedSimpleOption.price
+        });
+        closeServiceModal();
+    };
+};
+
+// Show services with tiers (for photography)
+function showServiceWithTiers(container, service) {
+    let html = `
+        <div class="service-option-group">
+            <h3>Step 1: Select Your Service Type</h3>
+    `;
+    
+    service.options.forEach(option => {
+        const lowestPrice = Math.floor(option.basePrice * service.tiers[0].multiplier);
+        html += `
+            <div class="service-option-item" data-option-id="${option.id}" data-base-price="${option.basePrice}" onclick="selectServiceOption('${option.id}')">
+                <div class="option-header">
+                    <span class="option-title">${option.name}</span>
+                    <span class="option-price">Starting from SAR ${lowestPrice.toLocaleString()}</span>
+                </div>
+                <div class="option-description">${option.description}</div>
+            </div>
+        `;
+    });
+    
+    html += `
+        </div>
+        <div id="tierSelection" style="display: none; margin-top: 2rem;">
+            <h3>Step 2: Select Equipment Level</h3>
+            <div id="tierOptions"></div>
+        </div>
+        <button class="modal-add-btn" id="modalAddBtn" onclick="addSelectedServiceToBooking()" disabled>
+            Select an Option First
+        </button>
+    `;
+    
+    container.innerHTML = html;
+}
+
+// Discount code functionality
+window.applyDiscount = function() {
+    const code = document.getElementById('discountCode').value.trim().toUpperCase();
+    const messageEl = document.getElementById('discountMessage');
+    
+    // Example discount codes
+    const discountCodes = {
+        'WELCOME10': { type: 'percentage', value: 10, message: '10% discount applied!' },
+        'SAVE500': { type: 'fixed', value: 500, message: 'SAR 500 discount applied!' },
+        'FIRSTTIME': { type: 'percentage', value: 15, message: '15% first-time discount applied!' }
+    };
+    
+    if (discountCodes[code]) {
+        const discount = discountCodes[code];
+        messageEl.style.color = '#00442B';
+        messageEl.textContent = discount.message;
+        
+        // Apply discount to booking total
+        localStorage.setItem('nmo-discount', JSON.stringify(discount));
+        updateBookingDisplay();
+    } else {
+        messageEl.style.color = '#e74c3c';
+        messageEl.textContent = 'Invalid discount code';
+    }
+};
+
+// Service info modal
+window.showServiceInfo = function(infoType) {
+    const modal = document.getElementById('serviceInfoModal');
+    const modalContent = document.getElementById('modalContent');
+    
+    // Placeholder for samples/portfolio
+    modalContent.innerHTML = `
+        <h2>Sample Work</h2>
+        <p>Our portfolio showcases high-quality work across various industries.</p>
+        <p style="margin-top: 1rem; font-style: italic;">Portfolio gallery coming soon...</p>
+    `;
+    
+    modal.style.display = 'flex';
+};

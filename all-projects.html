@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Projects - Xplorers Creative</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/project.css">
+    <link rel="stylesheet" href="css/video-categories.css">
+    <link rel="stylesheet" href="css/video-gallery.css">
+    <link rel="stylesheet" href="css/video-modal.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Complete Header and Footer Styling */
+        
+        /* Language Switcher */
+        .main-header .navbar .nav-container .language-switcher {
+            display: flex !important;
+            gap: 0.5rem !important;
+            background: linear-gradient(135deg, #f0f4f8, rgba(141, 163, 199, 0.2)) !important;
+            padding: 4px !important;
+            border-radius: 25px !important;
+            border: 1px solid #8da3c7 !important;
+            height: 40px !important;
+            align-items: center !important;
+            flex-shrink: 0 !important;
+        }
+
+        .main-header .navbar .nav-container .language-switcher .lang-btn {
+            padding: 0.5rem 1rem !important;
+            border: none !important;
+            background: transparent !important;
+            color: #445c80 !important;
+            cursor: pointer !important;
+            border-radius: 20px !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            transition: all 0.3s ease !important;
+            height: 32px !important;
+            line-height: 1 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-transform: none !important;
+            letter-spacing: normal !important;
+            transform: none !important;
+            box-shadow: none !important;
+            text-decoration: none !important;
+        }
+
+        .main-header .navbar .nav-container .language-switcher .lang-btn.active {
+            background: linear-gradient(135deg, #445c80, #6b7fa3) !important;
+            color: #f0f4f8 !important;
+            transform: none !important;
+            text-decoration: none !important;
+        }
+
+        /* Header and Navigation Styling */
+        .main-header {
+            background: linear-gradient(180deg, #1f2a3d 0%, #445c80 100%) !important;
+            backdrop-filter: blur(12px) !important;
+            -webkit-backdrop-filter: blur(12px) !important;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3) !important;
+            position: relative !important;
+            z-index: 1000 !important;
+        }
+
+        .navbar {
+            padding: 1rem 0 !important;
+        }
+
+        .nav-container {
+            max-width: 1200px !important;
+            margin: 0 auto !important;
+            padding: 0 20px !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            gap: 2rem !important;
+        }
+
+        .logo {
+            display: flex !important;
+            align-items: center !important;
+            text-decoration: none !important;
+            font-size: 1.5rem !important;
+            font-weight: 700 !important;
+            color: #f0f4f8 !important;
+            flex-shrink: 0 !important;
+        }
+
+        .logo-img {
+            height: 45px !important;
+            width: auto !important;
+            filter: brightness(0) invert(1) !important;
+            opacity: 0.9 !important;
+        }
+
+        .nav-menu {
+            display: flex !important;
+            gap: 2rem !important;
+            align-items: center !important;
+        }
+
+        .nav-link {
+            color: #f0f4f8 !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            padding: 0.5rem 1rem !important;
+            border: none !important;
+            background: transparent !important;
+            border-radius: 0 !important;
+            transition: color 0.3s ease !important;
+            position: relative !important;
+        }
+
+        .nav-link:hover {
+            color: #8da3c7 !important;
+            background: transparent !important;
+            transform: none !important;
+        }
+
+        .nav-link.active {
+            color: #8da3c7 !important;
+            background: transparent !important;
+        }
+
+        /* Footer Styling */
+        html, body {
+            margin: 0 !important;
+            padding: 0 !important;
+            height: 100% !important;
+        }
+
+        body {
+            display: flex !important;
+            flex-direction: column !important;
+            min-height: 100vh !important;
+        }
+
+        main, .container {
+            flex: 1 !important;
+        }
+
+        .main-footer {
+            background: linear-gradient(135deg, #1f2a3d 0%, #445c80 100%) !important;
+            color: #f0f4f8 !important;
+            padding: 3rem 0 2rem !important;
+            margin-top: auto !important;
+            position: relative !important;
+            margin-bottom: 0 !important;
+        }
+
+        .footer-content {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 1.5rem !important;
+            text-align: center !important;
+        }
+
+        .footer-logo {
+            margin-bottom: 1rem !important;
+        }
+
+        .footer-logo-img {
+            height: 50px !important;
+            width: auto !important;
+            filter: brightness(0) invert(1) !important;
+            opacity: 0.9 !important;
+        }
+
+        .footer-social {
+            display: flex !important;
+            gap: 1.5rem !important;
+            margin-bottom: 1rem !important;
+        }
+
+        .social-link {
+            width: 40px !important;
+            height: 40px !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            background: rgba(141, 163, 199, 0.1) !important;
+            border-radius: 50% !important;
+            transition: all 0.3s ease !important;
+            color: #f0f4f8 !important;
+            text-decoration: none !important;
+        }
+
+        .social-link:hover {
+            background: #8da3c7 !important;
+            transform: translateY(-3px) !important;
+        }
+
+        .social-link svg {
+            width: 20px !important;
+            height: 20px !important;
+            fill: currentColor !important;
+        }
+
+        .social-link:hover svg {
+            fill: #445c80 !important;
+        }
+
+        .footer-links {
+            display: flex !important;
+            gap: 2rem !important;
+            flex-wrap: wrap !important;
+            justify-content: center !important;
+        }
+
+        .footer-links a {
+            color: #f0f4f8 !important;
+            text-decoration: none !important;
+            transition: color 0.3s ease !important;
+        }
+
+        .footer-links a:hover {
+            color: #8da3c7 !important;
+        }
+
+        /* RTL Support */
+        html[dir="rtl"] .nav-container {
+            flex-direction: row-reverse !important;
+        }
+
+        html[dir="rtl"] .nav-menu {
+            flex-direction: row-reverse !important;
+        }
+
+        html[dir="rtl"] .language-switcher {
+            order: -1 !important;
+        }
+
+        html[dir="rtl"] .logo {
+            order: 1 !important;
+        }
+
+        html[dir="rtl"] .nav-menu {
+            order: 0 !important;
+            flex-direction: row-reverse !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="images/xplorers logo.svg" alt="Xplorers Creative Logo" class="logo-img home-logo" style="height: 45px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;">
+                </a>
+                
+                <div class="nav-menu">
+                    <a href="our-work.html" class="nav-link active" data-en="Our Work" data-ar="أعمالنا">Our Work</a>
+                    <a href="services.html" class="nav-link" data-en="Services" data-ar="الخدمات">Services</a>
+                    <a href="process.html" class="nav-link" data-en="Our Process" data-ar="عمليتنا">Our Process</a>
+                    <a href="contact.html" class="nav-link" data-en="Contact" data-ar="تواصل معنا">Contact</a>
+                </div>
+                
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ar">عربي</button>
+                </div>
+                
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section" style="
+        background-image: url('images/banners/working in studio.png');
+        background-size: cover;
+        background-position: 130% 60%;
+        background-repeat: no-repeat;
+        padding: 5rem 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    ">
+        <div style="
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        "></div>
+        <div style="
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        ">
+            <h1 style="
+                font-size: 3.5rem;
+                font-weight: 700;
+                margin: 0;
+                color: white;
+                text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            " data-en="All Projects" data-ar="جميع المشاريع">All Projects</h1>
+        </div>
+    </section>
+
+    <!-- Project Content -->
+    <section class="project-content">
+        <div class="container">
+            <!-- Video Categories Filter -->
+            <div class="video-categories">
+                <div class="category-buttons">
+                    <button class="category-btn active" data-filter="all" data-en="All" data-ar="الكل">All</button>
+                    <button class="category-btn" data-filter="commercial" data-en="Commercial" data-ar="إعلانات تجارية">Commercial</button>
+                    <button class="category-btn" data-filter="events" data-en="Events" data-ar="فعاليات">Events</button>
+                    <button class="category-btn" data-filter="schools" data-en="Schools" data-ar="مدارس">Schools</button>
+                    <button class="category-btn" data-filter="healthcare" data-en="Healthcare" data-ar="رعاية صحية">Healthcare</button>
+                    <button class="category-btn" data-filter="ecommerce" data-en="E-commerce" data-ar="تجارة إلكترونية">E-commerce</button>
+                    <button class="category-btn" data-filter="products" data-en="Products" data-ar="منتجات">Products</button>
+                    <button class="category-btn" data-filter="realestate" data-en="Real Estate" data-ar="عقارات">Real Estate</button>
+                    <button class="category-btn" data-filter="fnb" data-en="F&B" data-ar="أغذية ومشروبات">F&B</button>
+                    <button class="category-btn" data-filter="documentary" data-en="Documentary" data-ar="وثائقي">Documentary</button>
+                </div>
+            </div>
+
+            <!-- Video Gallery -->
+            <div id="all-projects-gallery" class="project-gallery">
+            </div>
+            
+            <!-- Project Info -->
+            <div class="project-info">
+                <div class="project-description">
+                </div>
+                
+                <!-- Help Section -->
+                <div class="help-section">
+                    <h3 data-en="Interested in similar results?" data-ar="هل أنت مهتم بنتائج مماثلة؟">
+                        Interested in similar results?
+                    </h3>
+                    <p data-en="Our team is here to help you choose the perfect solution to achieve your goals." data-ar="فريقنا هنا لمساعدتك في اختيار الحل المثالي لتحقيق أهدافك.">
+                        Our team is here to help you choose the perfect solution to achieve your goals.
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="packages.html" class="help-btn" data-en="View Packages" data-ar="عرض الباقات">
+                            View Packages
+                        </a>
+                        <a href="handpicked.html" class="help-btn" data-en="Handpick Services" data-ar="اختر الخدمات" style="margin-left: 1rem;">
+                            Handpick Services
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="images/xplorers logo.svg" alt="Xplorers Creative Logo" class="footer-logo-img">
+                </div>
+                <div class="footer-links">
+                    <a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a>
+                    <a href="our-work.html" data-en="Our Work" data-ar="أعمالنا">Our Work</a>
+                    <a href="services.html" data-en="Services" data-ar="الخدمات">Services</a>
+                    <a href="process.html" data-en="Process" data-ar="العملية">Process</a>
+                    <a href="contact.html" data-en="Contact" data-ar="اتصل">Contact</a>
+                </div>
+                <div class="footer-social">
+                    <a href="https://x.com/XplorersMedia" class="social-link" aria-label="X (Twitter)" target="_blank" rel="noopener noreferrer">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.instagram.com/xplorerscreative/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.405a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/>
+                        </svg>
+                    </a>
+                    <a href="https://www.linkedin.com/in/xplorers-media-322aab395/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+ 
+    <!-- Load unified data source -->
+    <script src="js/unified-projects-data-our-work-page.js"></script>
+    <!-- Load aggregation data and main script -->
+
+    <script src="js/all-projects.js"></script>
+    <script src="js/all-projects-categories.js"></script>
+    <script src="js/language-switcher.js"></script>
+</body>
+</html>

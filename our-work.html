@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Work - Xplorers Creative</title>
+    <meta name="description" content="Explore our portfolio of successful projects across video production, photography, branding, and marketing services.">
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/our-work.css">  <!-- Changed from portfolio.css -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <style>
+        /* Language Switcher - Exact Copy from Home Page with Proper Dimensions */
+        .language-switcher {
+            display: flex !important;
+            gap: 0.5rem !important;
+            background: linear-gradient(135deg, var(--secondary-light), rgba(141, 163, 199, 0.2)) !important;
+            padding: 4px !important;
+            border-radius: 25px !important;
+            border: 1px solid var(--primary-light) !important;
+            height: 40px !important;
+            align-items: center !important;
+            flex-shrink: 0 !important;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 1rem !important;
+            border: none !important;
+            background: transparent !important;
+            color: var(--primary-dark) !important;
+            cursor: pointer !important;
+            border-radius: 20px !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            transition: all 0.3s ease !important;
+            height: 32px !important;
+            line-height: 1 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-transform: none !important;
+            letter-spacing: normal !important;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary-medium)) !important;
+            color: var(--secondary-light) !important;
+            transform: none !important;
+        }
+
+        /* RTL Support for Language Switcher */
+        html[dir="rtl"] .nav-container {
+            flex-direction: row-reverse !important;
+        }
+
+        html[dir="rtl"] .nav-menu {
+            flex-direction: row-reverse !important;
+        }
+
+        .lang-btn:hover {
+            transform: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="logo">
+                    <img src="images/xplorers logo.svg" alt="Xplorers Creative Logo" class="logo-img home-logo" style="height: 45px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;">
+                </a>
+                
+                <div class="nav-menu">
+                    <a href="our-work.html" class="nav-link active" data-en="Our Work" data-ar="أعمالنا">Our Work</a>
+                    <a href="services.html" class="nav-link" data-en="Services" data-ar="الخدمات">Services</a>
+                    <a href="process.html" class="nav-link" data-en="Our Process" data-ar="عمليتنا">Our Process</a>
+                    <a href="contact.html" class="nav-link" data-en="Contact" data-ar="اتصل بنا">Contact</a>
+                </div>
+                
+                <div class="language-switcher">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="ar">عربي</button>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Projects Section -->
+    <section class="projects-section">
+        <div class="container">
+            <!-- Filter Buttons -->
+            <div class="video-categories">
+                <div class="category-buttons">
+                <button class="category-btn active" data-filter="all" data-en="All" data-ar="الكل">All</button>
+                <button class="category-btn" data-filter="branding" data-en="Branding" data-ar="العلامة التجارية">Branding</button>
+                <button class="category-btn" data-filter="web" data-en="Web Development" data-ar="تطوير الويب">Web Development</button>
+                <button class="category-btn" data-filter="marketing" data-en="Marketing" data-ar="التسويق">Marketing</button>
+                <button class="category-btn" data-filter="video" data-en="Video" data-ar="فيديو">Video</button>
+            </div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="project-gallery">
+                
+                <!-- All Projects Card -->
+                <div class="gallery-item" data-project-id="all" data-category="all">
+                    <div class="image-container">
+                        <img src="images/thumbnails/working on new service.jpg" 
+                             alt="All Projects" 
+                             loading="lazy"
+                             width="400" 
+                             height="300">
+                    </div>
+                    <div class="project-info">
+                        <h3 data-en="All Projects" data-ar="جميع المشاريع">All Projects</h3>
+                        <p data-en="View all our work" data-ar="عرض جميع أعمالنا">View all our work</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 1: Video Production -->
+                <div class="gallery-item" data-project-id="4" data-category="video">
+                    <div class="image-container">
+                        <img src="images/our work page covers/studio bts.png" 
+                             alt="Video Production Project" 
+                             loading="lazy"
+                             width="400" 
+                             height="300">
+                    </div>
+                    <div class="project-info">
+                        <h3 data-en="Video Production" data-ar="إنتاج الفيديو">Video Production</h3>
+                        <p data-en="Professional video content" data-ar="محتوى فيديو احترافي">Professional video content</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 2: Professional Photography -->
+                <div class="gallery-item" data-project-id="9" data-category="photography">
+                    <div class="image-container">
+                        <img src="images/thumbnails/photography studio.jpg" 
+                             alt="Professional Photography Project"
+                             loading="lazy"
+                             width="400" 
+                             height="300">
+                    </div>
+                    <div class="project-info">
+                        <h3 data-en="Professional Photography" data-ar="التصوير الاحترافي">Professional Photography</h3>
+                        <p data-en="High-quality photography" data-ar="تصوير عالي الجودة">High-quality photography</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 3: Social Media Campaign -->
+                <div class="gallery-item" data-project-id="7" data-category="marketing">
+                    <div class="image-container">
+                        <img src="images/thumbnails/social media posts on ipad.png" 
+                             alt="Social Media Campaign Project" 
+                             loading="lazy"
+                             width="400" 
+                             height="300">
+                    </div>
+                    <div class="project-info">
+                        <h3 data-en="Social Media Campaign" data-ar="حملة وسائل التواصل الاجتماعي">Social Media Campaign</h3>
+                        <p data-en="Engaging social content" data-ar="محتوى اجتماعي جذاب">Engaging social content</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 4: Content Strategy -->
+                <div class="gallery-item" data-project-id="5" data-category="marketing">
+                    <div class="image-container">
+                        <img src="images/thumbnails/content strategy.jpg" 
+                             alt="Content Strategy Project" 
+                             loading="lazy"
+                             width="400" 
+                             height="300">
+                    </div>
+                    <div class="project-info">
+                        <h3 data-en="Content Strategy" data-ar="استراتيجية المحتوى">Content Strategy</h3>
+                        <p data-en="Strategic content planning" data-ar="تخطيط المحتوى الاستراتيجي">Strategic content planning</p>
+                    </div>
+                </div>
+
+                <!-- Project Card 5: Brand Identity -->
+                <div class="gallery-item" data-project-id="1" data-category="branding">
+                    <div class="image-container">
+                        <img src="images/thumbnails/brand identity design.jpg" 
+                             alt="Brand Identity Design Project" 
+                             loading="lazy"
+                             width="400" 
+                             height="300">
+                    </div>
+                    <div class="project-info">
+                        <h3 data-en="Brand Identity Design" data-ar="تصميم الهوية البصرية">Brand Identity Design</h3>
+                        <p data-en="Complete brand solutions" data-ar="حلول العلامة التجارية الكاملة">Complete brand solutions</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Call to Action Section -->
+            <div class="help-section">
+                <h3 data-en="Ready to Start Your Project?" data-ar="هل أنت مستعد لبدء مشروعك؟">
+                    Ready to Start Your Project?
+                </h3>
+                <p data-en="Let's work together to bring your vision to life" data-ar="دعونا نعمل معًا لتحقيق رؤيتك">
+                    Let's work together to bring your vision to life
+                </p>
+                <a href="packages.html" class="help-btn">
+                    <span data-en="View Our Packages" data-ar="عرض باقاتنا">View Our Packages</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+<footer class="main-footer">
+    <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                <img src="images/xplorers logo.svg" alt="Xplorers Creative Logo" class="footer-logo-img">
+            </div>
+            <div class="footer-links">
+                <a href="index.html" data-en="Home" data-ar="الرئيسية">Home</a>
+                <a href="our-work.html" data-en="Our Work" data-ar="أعمالنا">Our Work</a>
+                <a href="services.html" data-en="Services" data-ar="الخدمات">Services</a>
+                <a href="process.html" data-en="Process" data-ar="العملية">Process</a>
+                <a href="contact.html" data-en="Contact" data-ar="اتصل">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://x.com/XplorersMedia" class="social-link" aria-label="X (Twitter)" target="_blank" rel="noopener noreferrer">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                    </svg>
+                </a>
+                <a href="https://www.instagram.com/xplorerscreative/" class="social-link" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zM5.838 12a6.162 6.162 0 1 1 12.324 0 6.162 6.162 0 0 1-12.324 0zM12 16a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm4.965-10.405a1.44 1.44 0 1 1 2.881.001 1.44 1.44 0 0 1-2.881-.001z"/>
+                    </svg>
+                </a>
+                <a href="https://www.linkedin.com/in/xplorers-media-322aab395/" class="social-link" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <!-- Load main scripts -->
+    <script src="js/main.js" defer></script>
+    <script src="js/our-work.js" defer></script>
+    <script src="js/language-switcher.js"></script>
+</body>
+</html>

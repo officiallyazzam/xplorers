@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>طلب عرض سعر مخصص - وكالة NMO</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/forms.css">
+    <link rel="stylesheet" href="css/custom-quote.css">
+    <link rel="stylesheet" href="css/custom-quote-ar.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Tajawal:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        /* Language Switcher - Exact Copy from Home Page with Proper Dimensions */
+        .language-switcher {
+            display: flex !important;
+            gap: 0.5rem !important;
+            background: linear-gradient(135deg, var(--secondary-light), rgba(141, 163, 199, 0.2)) !important;
+            padding: 4px !important;
+            border-radius: 25px !important;
+            border: 1px solid var(--primary-light) !important;
+            height: 40px !important;
+            align-items: center !important;
+            flex-shrink: 0 !important;
+        }
+
+        .lang-btn {
+            padding: 0.5rem 1rem !important;
+            border: none !important;
+            background: transparent !important;
+            color: var(--primary-dark) !important;
+            cursor: pointer !important;
+            border-radius: 20px !important;
+            font-weight: 600 !important;
+            font-size: 0.9rem !important;
+            transition: all 0.3s ease !important;
+            height: 32px !important;
+            line-height: 1 !important;
+            display: flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            text-transform: none !important;
+            letter-spacing: normal !important;
+            transform: none !important;
+            box-shadow: none !important;
+        }
+
+        .lang-btn.active {
+            background: linear-gradient(135deg, var(--primary-dark), var(--secondary-medium)) !important;
+            color: var(--secondary-light) !important;
+            transform: none !important;
+        }
+
+        /* RTL Support for Language Switcher */
+        html[dir="rtl"] .nav-container {
+            flex-direction: row-reverse !important;
+        }
+
+        html[dir="rtl"] .nav-menu {
+            flex-direction: row-reverse !important;
+        }
+
+        /* Direct RTL fix - Force language switcher to appear first (left) */
+        html[dir="rtl"] .language-switcher {
+            order: -1 !important;
+        }
+
+        html[dir="rtl"] .logo {
+            order: 1 !important;
+        }
+
+        html[dir="rtl"] .nav-menu {
+            order: 0 !important;
+            flex-direction: row-reverse !important;
+        }
+
+        .lang-btn:hover {
+            transform: none !important;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index-ar.html" class="logo">
+                    <img src="images/xplorers logo.svg" alt="Xplorers Creative Logo" class="logo-img home-logo" style="height: 45px; width: auto; filter: brightness(0) invert(1); opacity: 0.9;">
+                </a>
+                
+                <div class="nav-menu">
+                    <a href="our-work-ar.html" class="nav-link">أعمالنا</a>
+                    <a href="services-ar.html" class="nav-link">الخدمات</a>
+                    <a href="process-ar.html" class="nav-link">عمليتنا</a>
+                    <a href="contact-ar.html" class="nav-link">اتصل بنا</a>
+                </div>
+                
+                            <div class="language-switcher">
+                <button class="lang-btn" data-lang="en">EN</button>
+                <button class="lang-btn active" data-lang="ar">عربي</button>
+            </div>
+                
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="contact-hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">دعنا نبتكر شيئاً رائعاً معاً</h1>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Form Section -->
+    <section class="quote-section">
+        <div class="white-section">
+            <div class="container">
+                <div class="quote-form-container">
+                    <!-- Help Box -->
+                    <div class="help-box">
+                        <h3>لا تعرف ما الذي تبحث عنه؟</h3>
+                        <p>لا تقلق! نحن هنا لمساعدتك في تحديد احتياجاتك.</p>
+                        <a href="process-ar.html" class="help-link">تصفح جميع الخدمات ←</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-background">
+            <div class="container">
+                <div class="quote-form-container">
+                    <form id="customQuoteForm" class="custom-quote-form">
+                    <!-- Contact Information -->
+                    <div class="form-section">
+                        <h2 class="section-title">معلوماتك</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">الاسم الكامل <span class="required">*</span></label>
+                                <input type="text" class="form-input" name="fullName" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">اسم الشركة</label>
+                                <input type="text" class="form-input" name="companyName">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">البريد الإلكتروني <span class="required">*</span></label>
+                                <input type="email" class="form-input" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">رقم الهاتف <span class="required">*</span></label>
+                                <input type="tel" class="form-input" name="phone" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Type -->
+                    <div class="form-section">
+                        <h2 class="section-title">نوع المشروع</h2>
+                        <p class="section-description">اختر جميع الخدمات التي تهمك</p>
+                        <div class="service-checkboxes">
+                            <label class="service-checkbox">
+                                <input type="checkbox" name="services" value="videography">
+                                <span class="checkbox-label">
+                                    <span class="checkbox-icon"></span>
+                                    تصوير فيديو
+                                </span>
+                            </label>
+                            <label class="service-checkbox">
+                                <input type="checkbox" name="services" value="photography">
+                                <span class="checkbox-label">
+                                    <span class="checkbox-icon"></span>
+                                    تصوير فوتوغرافي
+                                </span>
+                            </label>
+                            <label class="service-checkbox">
+                                <input type="checkbox" name="services" value="video-editing">
+                                <span class="checkbox-label">
+                                    <span class="checkbox-icon"></span>
+                                    مونتاج فيديو
+                                </span>
+                            </label>
+                            <label class="service-checkbox">
+                                <input type="checkbox" name="services" value="motion-graphics">
+                                <span class="checkbox-label">
+                                    <span class="checkbox-icon"></span>
+                                    موشن جرافيك
+                                </span>
+                            </label>
+                            <label class="service-checkbox">
+                                <input type="checkbox" name="services" value="logo-design">
+                                <span class="checkbox-label">
+                                    <span class="checkbox-icon"></span>
+                                    تصميم الشعار والهوية
+                                </span>
+                            </label>
+                            <label class="service-checkbox">
+                                <input type="checkbox" name="services" value="social-media">
+                                <span class="checkbox-label">
+                                    <span class="checkbox-icon"></span>
+                                    إدارة وسائل التواصل
+                                </span>
+                            </label>
+                            <label class="service-checkbox">
+                                <input type="checkbox" name="services" value="website">
+                                <span class="checkbox-label">
+                                    <span class="checkbox-icon"></span>
+                                    تطوير المواقع
+                                </span>
+                            </label>
+                            <label class="service-checkbox">
+                                <input type="checkbox" name="services" value="other">
+                                <span class="checkbox-label">
+                                    <span class="checkbox-icon"></span>
+                                    خدمات أخرى
+                                </span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Project Details -->
+                    <div class="form-section">
+                        <h2 class="section-title">تفاصيل المشروع</h2>
+                        <div class="form-group">
+                            <label class="form-label">وصف المشروع <span class="required">*</span></label>
+                            <textarea class="form-textarea" name="description" rows="6" 
+                                      placeholder="أخبرنا عن مشروعك. ما الذي تريد تحقيقه؟ ما هي رؤيتك؟" required></textarea>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label class="form-label">الجدول الزمني</label>
+                                <select class="form-select" name="timeline">
+                                    <option value="">اختر الجدول الزمني</option>
+                                    <option value="asap">في أقرب وقت ممكن (تسليم سريع +50%)</option>
+                                    <option value="1week">خلال أسبوع</option>
+                                    <option value="2weeks">خلال أسبوعين</option>
+                                    <option value="1month">خلال شهر</option>
+                                    <option value="flexible">مرن</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label class="form-label">نطاق الميزانية</label>
+                                <select class="form-select" name="budget">
+                                    <option value="">اختر الميزانية</option>
+                                    <option value="under5k">أقل من 5,000 ريال</option>
+                                    <option value="5k-10k">5,000 - 10,000 ريال</option>
+                                    <option value="10k-25k">10,000 - 25,000 ريال</option>
+                                    <option value="25k-50k">25,000 - 50,000 ريال</option>
+                                    <option value="over50k">أكثر من 50,000 ريال</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional Information -->
+                    <div class="form-section">
+                        <h2 class="section-title">معلومات إضافية</h2>
+                        <div class="form-group">
+                            <label class="form-label">كيف سمعت عنا؟</label>
+                            <select class="form-select" name="referral">
+                                <option value="">الرجاء الاختيار</option>
+                                <option value="google">بحث جوجل</option>
+                                <option value="social">وسائل التواصل الاجتماعي</option>
+                                <option value="referral">ترشيح صديق/زميل</option>
+                                <option value="previous">عميل سابق</option>
+                                <option value="other">أخرى</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">متطلبات خاصة أو أسئلة</label>
+                            <textarea class="form-textarea" name="specialRequirements" rows="4" 
+                                      placeholder="هل لديك أي متطلبات خاصة، أسئلة، أو معلومات إضافية تود مشاركتها؟"></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="file-upload-label">
+                                <input type="file" name="attachments" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png">
+                                <span class="file-upload-text">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+                                        <polyline points="17 8 12 3 7 8"/>
+                                        <line x1="12" y1="3" x2="12" y2="15"/>
+                                    </svg>
+                                    إرفاق ملفات (اختياري)
+                                    <span class="file-types">PDF, DOC, DOCX, JPG, PNG (الحد الأقصى 10 ميجابايت)</span>
+                                </span>
+                            </label>
+                            <div id="fileList" class="file-list"></div>
+                        </div>
+                    </div>
+
+                    <!-- Goals Section -->
+                    <div class="form-section">
+                        <h2 class="section-title">أهدافك</h2>
+                        <div class="form-group">
+                            <label class="form-label">ما هي أهدافك الرئيسية من هذا المشروع؟ <span class="required">*</span></label>
+                            <div class="goals-checkboxes">
+                                <label class="goal-checkbox">
+                                    <input type="checkbox" name="goals" value="brand-awareness">
+                                    <span class="checkbox-label">
+                                        <span class="checkbox-icon"></span>
+                                        زيادة الوعي بالعلامة التجارية
+                                    </span>
+                                </label>
+                                <label class="goal-checkbox">
+                                    <input type="checkbox" name="goals" value="sales">
+                                    <span class="checkbox-label">
+                                        <span class="checkbox-icon"></span>
+                                        تعزيز المبيعات
+                                    </span>
+                                </label>
+                                <label class="goal-checkbox">
+                                    <input type="checkbox" name="goals" value="engagement">
+                                    <span class="checkbox-label">
+                                        <span class="checkbox-icon"></span>
+                                        تحسين تفاعل العملاء
+                                    </span>
+                                </label>
+                                <label class="goal-checkbox">
+                                    <input type="checkbox" name="goals" value="launch">
+                                    <span class="checkbox-label">
+                                        <span class="checkbox-icon"></span>
+                                        إطلاق منتج/خدمة جديدة
+                                    </span>
+                                </label>
+                                <label class="goal-checkbox">
+                                    <input type="checkbox" name="goals" value="rebrand">
+                                    <span class="checkbox-label">
+                                        <span class="checkbox-icon"></span>
+                                        إعادة تصميم الهوية
+                                    </span>
+                                </label>
+                                <label class="goal-checkbox">
+                                    <input type="checkbox" name="goals" value="event">
+                                    <span class="checkbox-label">
+                                        <span class="checkbox-icon"></span>
+                                        توثيق فعالية
+                                    </span>
+                                </label>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="form-label">ما هو المبلغ الذي ترغب في استثماره لتحقيق هذه الأهداف؟</label>
+                            <input type="text" class="form-input" name="investment" placeholder="مثال: 10,000 ريال أو 'منفتح للاقتراحات'">
+                        </div>
+                    </div>
+
+                    <!-- Submit Section -->
+                    <div class="form-section submit-section">
+                        <div class="privacy-notice">
+                            <p>بإرسال هذا النموذج، فإنك توافق على <a href="#">سياسة الخصوصية</a> و <a href="#">شروط الخدمة</a>.</p>
+                            <p>سنرد عليك خلال 24 ساعة بعرض سعر مخصص.</p>
+                        </div>
+                        
+                        <button type="submit" class="form-submit">
+                            <span>طلب عرض سعر مخصص</span>
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <line x1="19" y1="12" x2="5" y2="12"/>
+                                <polyline points="12 5 5 12 12 19"/>
+                            </svg>
+                        </button>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div class="success-modal" id="successModal" style="display: none;">
+        <div class="success-modal-content">
+            <svg class="success-icon" width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="12" cy="12" r="10"/>
+                <path d="M9 12l2 2 4-4"/>
+            </svg>
+            <h2>تم إرسال طلب عرض السعر!</h2>
+            <p>شكراً لاهتمامك. سيقوم فريقنا بمراجعة متطلباتك والرد عليك خلال 24 ساعة بعرض سعر مخصص.</p>
+            <button onclick="closeSuccessModal()" class="success-close-btn">فهمت!</button>
+        </div>
+    </div>
+
+    <script src="js/language-switcher.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/custom-quote.js"></script>
+</body>
+</html>
